@@ -8,14 +8,30 @@
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
-    <header class="site-header">
+    <header class="site-header" data-site-header>
       <a class="brand" href="#home" aria-label="Izin Designs Interior Studio">
         <img src="https://izindesigns.com/wp-content/uploads/2026/05/cropped-Izin-Design-Interior-Studio-1-63x64.png" alt="Izin Designs Interior Studio">
-        <span>Izin Designs Interior Studio</span>
+        <span>
+          <strong>Izin Designs</strong>
+          <small>Interior Studio</small>
+        </span>
       </a>
-      <nav class="nav">
-        <a href="#home">Home Page</a>
+
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" data-nav-toggle>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span class="sr-only">Menu</span>
+      </button>
+
+      <nav class="nav" id="primary-nav" data-primary-nav>
+        <a href="#home">Home</a>
+        <a href="#services">Services</a>
+        <a href="#works">Works</a>
+        <a href="#bespoke">Bespoke</a>
+        <a href="#contact">Contact</a>
         <a href="https://izindesigns.com/career/">Career</a>
+        <a class="nav-cta" href="#consultation">Free Consultation</a>
       </nav>
     </header>
 
@@ -34,7 +50,7 @@
             </div>
           </div>
 
-          <div class="izin-form-card">
+          <div class="izin-form-card" id="consultation">
             <div class="izin-form-head">
               <small>Free Consultation</small>
               <h3>Tell us about your project</h3>
@@ -122,7 +138,7 @@
         </div>
       </section>
 
-      <section class="izin-solutions-section">
+      <section class="izin-solutions-section" id="services">
         <div class="izin-solutions-wrap">
           <div class="izin-solutions-head">
             <span class="izin-solutions-label">What We Design</span>
@@ -181,7 +197,7 @@
         </div>
       </section>
 
-      <section class="izin-portfolio-section">
+      <section class="izin-portfolio-section" id="works">
         <div class="strip-head"><small>Our Works</small><h2></h2></div>
         <div class="izin-portfolio-scroll">
           <a class="izin-project-card" href="https://izindesigns.com/project-details/?project=4bhk-house-residential-interior"><div class="izin-project-img"><img src="https://izindesigns.com/wp-content/uploads/2026/05/Izin-Porfolio.png" alt="4BHK House"></div><div class="izin-project-info"><span></span></div></a>
@@ -191,10 +207,10 @@
         </div>
       </section>
 
-      <section class="signature-section">
+      <section class="signature-section" id="bespoke">
         <div class="signature-head">
           <h2>Signature Bespoke</h2>
-          <div><button type="button" data-slide-prev>‹</button><button type="button" data-slide-next>›</button></div>
+          <div><button type="button" data-slide-prev>â€¹</button><button type="button" data-slide-next>â€º</button></div>
         </div>
         <div class="signature-gallery" data-gallery>
           <img src="https://izindesigns.com/wp-content/uploads/2026/05/10.png" alt="Signature Bespoke 01">
@@ -208,7 +224,7 @@
         </div>
       </section>
 
-      <section class="izin-contact-section">
+      <section class="izin-contact-section" id="contact">
         <div class="izin-contact-wrap">
           <div class="izin-contact-head">
             <span>Contact Izin Designs</span>

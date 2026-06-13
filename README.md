@@ -47,3 +47,25 @@ and use:
 ```
 
 This codebase does not edit WordPress core, Elementor, `wp-config.php`, or `.htaccess`.
+
+## Lead Capture
+
+The consultation form posts to:
+
+```text
+/wp-json/izin-leads/v1/submit
+```
+
+Submitted enquiries are saved in the WordPress database table:
+
+```text
+wp_izin_leads
+```
+
+Admins can view leads from:
+
+```text
+WordPress Admin > Izin Leads
+```
+
+After saving, the visitor is redirected to WhatsApp with the enquiry details.

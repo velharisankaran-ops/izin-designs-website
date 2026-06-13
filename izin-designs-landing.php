@@ -11,6 +11,10 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
+require_once plugin_dir_path(__FILE__) . 'includes/izin-leads.php';
+
+register_activation_hook(__FILE__, 'izin_leads_install');
+
 function izin_designs_landing_shortcode() {
     $frontend_dir = plugin_dir_path(__FILE__) . 'frontend/';
     $frontend_url = plugin_dir_url(__FILE__) . 'frontend/';

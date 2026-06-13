@@ -7,6 +7,8 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
+require_once get_template_directory() . '/includes/izin-leads.php';
+
 function izin_designs_theme_setup() {
     add_theme_support('title-tag');
     add_theme_support('post-thumbnails');
@@ -39,3 +41,10 @@ function izin_designs_theme_assets() {
     );
 }
 add_action('wp_enqueue_scripts', 'izin_designs_theme_assets');
+
+function izin_designs_theme_activate() {
+    if (function_exists('izin_leads_install')) {
+        izin_leads_install();
+    }
+}
+add_action('after_switch_theme', 'izin_designs_theme_activate');

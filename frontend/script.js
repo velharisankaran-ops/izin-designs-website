@@ -77,23 +77,52 @@ document.addEventListener("DOMContentLoaded", function () {
   var form = document.querySelector("[data-lead-form]");
 
   if (form) {
-    form.addEventListener("submit", function (event) {
+    form.addEventListener("submit", async function (event) {
       event.preventDefault();
 
       var data = new FormData(form);
+      var leadData = {
+        name: data.get("name") || "",
+        phone: data.get("phone") || "",
+        property_type: data.get("property_type") || "",
+        budget: data.get("budget") || "",
+        email: data.get("email") || "",
+        sqft: data.get("sqft") || "",
+        location: data.get("location") || "",
+        source_url: window.location.href
+      };
       var message = [
         "New Izin Designs Consultation Enquiry",
         "",
-        "Name: " + (data.get("name") || ""),
-        "Phone: " + (data.get("phone") || ""),
-        "Property Type: " + (data.get("property_type") || ""),
-        "Budget: " + (data.get("budget") || ""),
-        "Email: " + (data.get("email") || "Not provided"),
-        "Approx. Sq.Ft: " + (data.get("sqft") || "Not provided"),
-        "Location: " + (data.get("location") || "Not provided")
+        "Name: " + leadData.name,
+        "Phone: " + leadData.phone,
+        "Property Type: " + leadData.property_type,
+        "Budget: " + leadData.budget,
+        "Email: " + (leadData.email || "Not provided"),
+        "Approx. Sq.Ft: " + (leadData.sqft || "Not provided"),
+        "Location: " + (leadData.location || "Not provided")
       ].join("\n");
+      var whatsappURL = "https://wa.me/918714737111?text=" + encodeURIComponent(message);
+      var submitButton = form.querySelector(".izin-submit");
 
-      window.location.href = "https://wa.me/918714737111?text=" + encodeURIComponent(message);
+      if (submitButton) {
+        submitButton.disabled = true;
+        submitButton.textContent = "Saving...";
+      }
+
+      try {
+        await fetch("/wp-json/izin-leads/v1/submit", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(leadData)
+        });
+      } catch (error) {
+        // Continue to WhatsApp even if the lead endpoint is unavailable.
+      }
+
+      window.location.href = whatsappURL;
     });
   }
 

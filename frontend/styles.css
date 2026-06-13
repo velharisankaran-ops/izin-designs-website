@@ -22,7 +22,9 @@ body {
   margin: 0;
   background: #ffffff;
   color: var(--ink);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Inter", "Segoe UI", Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  line-height: 1.5;
 }
 
 a {
@@ -85,16 +87,16 @@ img {
 .brand strong {
   font-size: 19px;
   line-height: 1.05;
-  font-weight: 700;
-  letter-spacing: -0.02em;
+  font-weight: 500;
+  letter-spacing: 0;
 }
 
 .brand small {
   margin-top: 3px;
   font-size: 10px;
   line-height: 1;
-  font-weight: 800;
-  letter-spacing: 0.16em;
+  font-weight: 500;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: #777777;
 }
@@ -102,11 +104,10 @@ img {
 .nav {
   display: flex;
   align-items: center;
-  gap: 32px;
+  gap: 28px;
   font-size: 13px;
-  font-weight: 800;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  font-weight: 500;
+  letter-spacing: 0.01em;
 }
 
 .nav a {
@@ -151,7 +152,7 @@ img {
   border-radius: 999px;
   background: var(--pink);
   color: #ffffff !important;
-  box-shadow: 0 10px 24px rgba(248, 68, 100, 0.22);
+  box-shadow: 0 10px 24px rgba(248, 68, 100, 0.18);
   opacity: 1 !important;
 }
 
@@ -228,8 +229,8 @@ img {
   padding-bottom: 8px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.72);
   font-size: 11px;
-  font-weight: 800;
-  letter-spacing: 0.20em;
+  font-weight: 500;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.92);
   text-shadow: 0 3px 16px rgba(0, 0, 0, 0.55);
@@ -241,8 +242,8 @@ img {
   font-family: Georgia, "Times New Roman", serif;
   font-size: clamp(48px, 5.8vw, 78px);
   line-height: 0.96;
-  font-weight: 600;
-  letter-spacing: -0.045em;
+  font-weight: 400;
+  letter-spacing: -0.025em;
   color: #ffffff;
   text-shadow: 0 6px 28px rgba(0, 0, 0, 0.72);
 }
@@ -253,8 +254,8 @@ img {
   font-family: Arial, Helvetica, sans-serif;
   font-size: clamp(18px, 2vw, 28px);
   line-height: 1.15;
-  font-weight: 800;
-  letter-spacing: 0.02em;
+  font-weight: 500;
+  letter-spacing: 0;
   color: var(--hero-gold);
 }
 
@@ -263,7 +264,7 @@ img {
   margin: 18px 0 0;
   font-size: 15px;
   line-height: 1.55;
-  font-weight: 500;
+  font-weight: 400;
   color: rgba(255, 255, 255, 0.90);
   text-shadow: 0 4px 18px rgba(0, 0, 0, 0.58);
 }
@@ -285,8 +286,8 @@ img {
   background: rgba(255, 255, 255, 0.11);
   backdrop-filter: blur(8px);
   font-size: 10px;
-  font-weight: 800;
-  letter-spacing: 0.06em;
+  font-weight: 500;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.92);
 }
@@ -310,8 +311,8 @@ img {
   display: block;
   margin-bottom: 2px;
   font-size: 8px;
-  font-weight: 800;
-  letter-spacing: 0.14em;
+  font-weight: 500;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.62);
 }
@@ -320,7 +321,7 @@ img {
   margin: 0;
   font-size: 15px;
   line-height: 1.18;
-  font-weight: 800;
+  font-weight: 500;
 }
 
 .izin-form-body {
@@ -335,7 +336,7 @@ img {
   display: block;
   margin-bottom: 4px;
   font-size: 10px;
-  font-weight: 800;
+  font-weight: 500;
   color: #555555;
 }
 
@@ -373,8 +374,8 @@ img {
   background: var(--pink);
   color: #ffffff;
   font-size: 11px;
-  font-weight: 800;
-  letter-spacing: 0.10em;
+  font-weight: 600;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
   cursor: pointer;
 }
@@ -444,8 +445,8 @@ img {
   display: block;
   margin-bottom: 8px;
   font-size: 10px;
-  font-weight: 800;
-  letter-spacing: 0.20em;
+  font-weight: 500;
+  letter-spacing: 0.07em;
   text-transform: uppercase;
   color: var(--pink);
 }
@@ -457,7 +458,7 @@ img {
   font-size: clamp(30px, 4vw, 50px);
   line-height: 1.05;
   font-weight: 400;
-  letter-spacing: -0.04em;
+  letter-spacing: -0.02em;
   color: var(--ink);
 }
 
@@ -532,8 +533,8 @@ img {
   display: block;
   margin-bottom: 18px;
   font-size: 10px;
-  font-weight: 800;
-  letter-spacing: 0.18em;
+  font-weight: 500;
+  letter-spacing: 0.09em;
   text-transform: uppercase;
   color: var(--pink);
 }
@@ -580,7 +581,7 @@ img {
   background: rgba(255, 255, 255, 0.72);
   border: 1px solid rgba(0, 0, 0, 0.08);
   font-size: 10px;
-  font-weight: 800;
+  font-weight: 500;
   color: var(--ink);
 }
 
@@ -589,6 +590,7 @@ img {
   margin-bottom: 6px;
   font-size: 13px;
   line-height: 1.25;
+  font-weight: 500;
   color: var(--ink);
 }
 
@@ -633,7 +635,7 @@ img {
   font-size: clamp(30px, 3vw, 44px);
   line-height: 1;
   font-weight: 400;
-  letter-spacing: -0.04em;
+  letter-spacing: -0.02em;
 }
 
 .izin-metric-suffix {
@@ -645,8 +647,8 @@ img {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 11px;
   line-height: 1.45;
-  font-weight: 600;
-  letter-spacing: 0.08em;
+  font-weight: 500;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
 }
 
@@ -681,7 +683,7 @@ img {
   line-height: 1.05;
   color: #1f1f2b;
   font-weight: 400;
-  letter-spacing: -0.045em;
+  letter-spacing: -0.02em;
 }
 
 .izin-client-marquee {
@@ -790,8 +792,8 @@ img {
 .izin-project-info span {
   display: inline-block;
   font-size: 9px;
-  font-weight: 800;
-  letter-spacing: 0.15em;
+  font-weight: 500;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--pink);
 }
@@ -814,7 +816,7 @@ img {
   font-family: Georgia, "Times New Roman", serif;
   font-size: clamp(28px, 4vw, 46px);
   font-weight: 400;
-  letter-spacing: -0.04em;
+  letter-spacing: -0.02em;
 }
 
 .signature-head button {
@@ -882,8 +884,8 @@ img {
 .izin-contact-details h3 {
   margin: 0 0 8px;
   font-size: 11px;
-  font-weight: 800;
-  letter-spacing: 0.15em;
+  font-weight: 500;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--pink);
 }
@@ -914,8 +916,8 @@ img {
   color: #ffffff;
   border: 1px solid var(--ink);
   font-size: 10.5px;
-  font-weight: 800;
-  letter-spacing: 0.09em;
+  font-weight: 600;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
 }
 
@@ -1019,7 +1021,7 @@ img {
 
   .brand small {
     font-size: 8px;
-    letter-spacing: 0.13em;
+    letter-spacing: 0.07em;
   }
 
   .nav-toggle {
@@ -1110,7 +1112,7 @@ img {
 
   .izin-small-label {
     font-size: 8px;
-    letter-spacing: 0.14em;
+    letter-spacing: 0.08em;
     margin-bottom: 10px;
   }
 
@@ -1118,7 +1120,7 @@ img {
     max-width: 360px;
     font-size: clamp(36px, 10vw, 44px);
     line-height: 1.02;
-    letter-spacing: -0.035em;
+    letter-spacing: -0.02em;
   }
 
   .izin-hero-title h1 span {

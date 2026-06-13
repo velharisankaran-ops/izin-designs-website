@@ -439,6 +439,11 @@ img {
   padding: 0 24px;
 }
 
+.video-section-head.compact {
+  margin-top: 34px;
+  margin-bottom: 16px;
+}
+
 .video-section-head small,
 .video-card > span {
   display: block;
@@ -458,6 +463,10 @@ img {
   font-weight: 400;
   letter-spacing: -0.02em;
   color: var(--ink);
+}
+
+.video-section-head.compact h2 {
+  font-size: clamp(24px, 3vw, 36px);
 }
 
 .video-slider {
@@ -486,6 +495,18 @@ img {
 
 .primary-video {
   flex-basis: min(420px, 78vw);
+}
+
+.testimonial-video-block {
+  margin-top: 8px;
+}
+
+.testimonial-slider {
+  padding-bottom: 14px;
+}
+
+.testimonial-card {
+  flex-basis: min(330px, 70vw);
 }
 
 .izin-shorts-video {
@@ -1269,12 +1290,20 @@ img {
     margin-bottom: 14px;
   }
 
+  .video-section-head.compact {
+    margin-top: 28px;
+  }
+
   .video-card {
     flex-basis: 78vw;
   }
 
   .primary-video {
     flex-basis: 82vw;
+  }
+
+  .testimonial-card {
+    flex-basis: 78vw;
   }
 
   .izin-form-close {

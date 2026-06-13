@@ -292,6 +292,25 @@ img {
   color: rgba(255, 255, 255, 0.92);
 }
 
+.mobile-consultation-btn {
+  display: none;
+  width: max-content;
+  min-height: 44px;
+  margin-top: 20px;
+  padding: 0 18px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--pink);
+  color: #ffffff;
+  box-shadow: 0 14px 34px rgba(248, 68, 100, 0.26);
+  font: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
 .izin-form-card {
   width: 100%;
   background: #ffffff;
@@ -302,6 +321,7 @@ img {
 }
 
 .izin-form-head {
+  position: relative;
   padding: 11px 16px;
   background: var(--ink);
   color: #ffffff;
@@ -322,6 +342,23 @@ img {
   font-size: 15px;
   line-height: 1.18;
   font-weight: 500;
+}
+
+.izin-form-close {
+  display: none;
+  position: absolute;
+  top: 9px;
+  right: 10px;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
 }
 
 .izin-form-body {
@@ -1136,12 +1173,32 @@ img {
     display: none;
   }
 
+  .mobile-consultation-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
   .izin-form-card {
     position: relative;
     z-index: 3;
-    margin-top: -18px;
+    display: none;
+    margin-top: -8px;
     border-radius: 15px;
     box-shadow: 0 18px 42px rgba(0, 0, 0, 0.22);
+  }
+
+  .izin-form-card.is-open {
+    display: block;
+  }
+
+  .izin-form-close {
+    display: grid;
+    place-items: center;
+  }
+
+  .izin-form-head {
+    padding-right: 50px;
   }
 
   .izin-form-grid {

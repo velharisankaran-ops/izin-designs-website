@@ -2,7 +2,6 @@
 Thumbs.db
 *.log
 *.zip
+.env
 node_modules/
 dist/
-.env
-H_44588875 - domain-transfer-invoice.pdf

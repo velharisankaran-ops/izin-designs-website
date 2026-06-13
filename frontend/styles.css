@@ -530,7 +530,13 @@ img {
 }
 
 .instagram-video {
+  position: relative;
   background: #ffffff;
+}
+
+.instagram-video iframe {
+  height: calc(100% + 132px);
+  transform: translateY(-58px);
 }
 
 .izin-solutions-section {

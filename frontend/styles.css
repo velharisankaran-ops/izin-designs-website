@@ -522,21 +522,13 @@ img {
   box-shadow: 0 22px 56px rgba(0, 0, 0, 0.22);
 }
 
-.izin-shorts-video iframe {
+.izin-shorts-video iframe,
+.izin-shorts-video video {
   width: 100%;
   height: 100%;
   display: block;
+  object-fit: cover;
   border: 0;
-}
-
-.instagram-video {
-  position: relative;
-  background: #ffffff;
-}
-
-.instagram-video iframe {
-  height: calc(100% + 132px);
-  transform: translateY(-58px);
 }
 
 .izin-solutions-section {

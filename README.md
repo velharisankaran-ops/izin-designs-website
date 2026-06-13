@@ -1,31 +1,49 @@
-# IZIN Designs Landing Page Plugin
+# IZIN Designs WordPress Codebase
 
-This repository is structured so Hostinger Git can deploy it directly into this folder:
+This repository can be deployed as a custom WordPress theme:
+
+```text
+public_html/wp-content/themes/izin-designs-theme/
+```
+
+WordPress requires these root theme files, which are included:
+
+```text
+style.css
+functions.php
+index.php
+front-page.php
+header.php
+footer.php
+frontend/
+```
+
+After deploying the theme, preview it from:
+
+```text
+WordPress Admin > Appearance > Themes > IZIN Designs Theme > Live Preview
+```
+
+Do not delete the current live theme until this theme is tested.
+
+## Optional Plugin Use
+
+This repository also still contains the shortcode plugin file:
+
+```text
+izin-designs-landing.php
+```
+
+If deploying as a plugin instead, deploy to:
 
 ```text
 public_html/wp-content/plugins/izin-designs-landing/
 ```
 
-The final server structure should be:
-
-```text
-public_html/wp-content/plugins/izin-designs-landing/izin-designs-landing.php
-public_html/wp-content/plugins/izin-designs-landing/frontend/index.html
-public_html/wp-content/plugins/izin-designs-landing/frontend/styles.css
-public_html/wp-content/plugins/izin-designs-landing/frontend/script.js
-```
-
-After deploying:
-
-1. Open WordPress Admin.
-2. Go to Plugins.
-3. Activate **IZIN Designs Landing Page**.
-4. Edit the target page with Elementor.
-5. Add a Shortcode widget.
-6. Use:
+and use:
 
 ```text
 [izin_designs_landing]
 ```
 
-This plugin does not edit WordPress core, Elementor, the active theme, `wp-config.php`, or `.htaccess`.
+This codebase does not edit WordPress core, Elementor, `wp-config.php`, or `.htaccess`.

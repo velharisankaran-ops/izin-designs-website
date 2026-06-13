@@ -1,0 +1,17 @@
+/*
+Theme Name: IZIN Designs Theme
+Theme URI: https://izindesigns.com/
+Author: Velnex
+Author URI: https://velnex.com/
+Description: Custom coded WordPress theme for IZIN Designs Interior Studio.
+Version: 1.0.0
+Requires at least: 6.0
+Tested up to: 6.7
+Requires PHP: 7.4
+Text Domain: izin-designs-theme
+*/
+
+/*
+ * WordPress requires this file at the theme root. The actual frontend
+ * styles for the current design live in frontend/styles.css.
+ */

@@ -57,6 +57,9 @@ document.addEventListener("DOMContentLoaded", function () {
   function closeConsultationForm() {
     if (!consultationForm) return;
     consultationForm.classList.remove("is-open");
+    if (consultationOpen && window.matchMedia("(max-width: 767px)").matches) {
+      consultationOpen.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
   }
 
   if (consultationOpen) {

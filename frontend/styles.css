@@ -1112,10 +1112,10 @@ img {
   }
 
   .izin-hero {
-    min-height: auto;
+    min-height: 485px;
     overflow: visible;
     background: #ffffff;
-    padding-bottom: 32px;
+    padding-bottom: 34px;
   }
 
   .izin-hero::before {
@@ -1183,13 +1183,18 @@ img {
     position: relative;
     z-index: 3;
     display: none;
-    margin-top: -8px;
+    margin-top: 10px;
     border-radius: 15px;
     box-shadow: 0 18px 42px rgba(0, 0, 0, 0.22);
   }
 
   .izin-form-card.is-open {
     display: block;
+  }
+
+  .shorts-section {
+    position: relative;
+    z-index: 4;
   }
 
   .izin-form-close {

@@ -29,6 +29,13 @@ function izin_designs_landing_shortcode() {
         return '<p>IZIN Designs page could not be loaded.</p>';
     }
 
+    $styles_path = $frontend_dir . 'styles.css';
+    $script_path = $frontend_dir . 'script.js';
+    $styles_version = file_exists($styles_path) ? (string) filemtime($styles_path) : '1.0.0';
+    $script_version = file_exists($script_path) ? (string) filemtime($script_path) : '1.0.0';
+    $html = str_replace('href="styles.css"', 'href="styles.css?ver=' . rawurlencode($styles_version) . '"', $html);
+    $html = str_replace('src="script.js"', 'src="script.js?ver=' . rawurlencode($script_version) . '"', $html);
+
     $base_tag = '<base href="' . esc_url($frontend_url) . '">';
     $resize_script = <<<'HTML'
 <script>

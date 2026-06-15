@@ -24,19 +24,23 @@ add_action('after_setup_theme', 'izin_designs_theme_setup');
 
 function izin_designs_theme_assets() {
     $theme_version = wp_get_theme()->get('Version');
+    $styles_path = get_template_directory() . '/frontend/styles.css';
+    $script_path = get_template_directory() . '/frontend/script.js';
+    $styles_version = file_exists($styles_path) ? (string) filemtime($styles_path) : $theme_version;
+    $script_version = file_exists($script_path) ? (string) filemtime($script_path) : $theme_version;
 
     wp_enqueue_style(
         'izin-designs-frontend',
         get_template_directory_uri() . '/frontend/styles.css',
         array(),
-        $theme_version
+        $styles_version
     );
 
     wp_enqueue_script(
         'izin-designs-frontend',
         get_template_directory_uri() . '/frontend/script.js',
         array(),
-        $theme_version,
+        $script_version,
         true
     );
 }

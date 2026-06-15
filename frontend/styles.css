@@ -439,11 +439,6 @@ img {
   padding: 0 24px;
 }
 
-.video-section-head.compact {
-  margin-top: 34px;
-  margin-bottom: 16px;
-}
-
 .video-section-head small,
 .video-card > span {
   display: block;
@@ -465,18 +460,15 @@ img {
   color: var(--ink);
 }
 
-.video-section-head.compact h2 {
-  font-size: clamp(24px, 3vw, 36px);
-}
-
 .video-slider {
   max-width: 1240px;
   margin: 0 auto;
-  padding: 0 24px 12px;
+  padding: 0 24px 16px;
   display: flex;
   gap: 18px;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
+  scrollbar-gutter: stable;
 }
 
 .video-slider::-webkit-scrollbar {
@@ -489,24 +481,16 @@ img {
 }
 
 .video-card {
-  flex: 0 0 min(360px, 76vw);
+  flex: 0 0 340px;
   scroll-snap-align: start;
 }
 
 .primary-video {
-  flex-basis: min(360px, 76vw);
-}
-
-.testimonial-video-block {
-  margin-top: 8px;
-}
-
-.testimonial-slider {
-  padding-bottom: 14px;
+  flex-basis: 340px;
 }
 
 .testimonial-card {
-  flex-basis: min(360px, 76vw);
+  flex-basis: 340px;
 }
 
 .izin-shorts-video {
@@ -1286,10 +1270,6 @@ img {
 
   .video-section-head {
     margin-bottom: 14px;
-  }
-
-  .video-section-head.compact {
-    margin-top: 28px;
   }
 
   .video-card {

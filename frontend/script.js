@@ -79,6 +79,39 @@ document.addEventListener("DOMContentLoaded", function () {
 
   var form = document.querySelector("[data-lead-form]");
 
+  function getLeadTrackingData() {
+    var params = new URLSearchParams(window.location.search);
+    var screenSize = "";
+    var viewportSize = "";
+    var timezone = "";
+
+    if (window.screen) {
+      screenSize = window.screen.width + "x" + window.screen.height;
+    }
+
+    viewportSize = window.innerWidth + "x" + window.innerHeight;
+
+    try {
+      timezone = Intl.DateTimeFormat().resolvedOptions().timeZone || "";
+    } catch (error) {
+      timezone = "";
+    }
+
+    return {
+      referrer: document.referrer || "",
+      language: navigator.language || "",
+      screen_size: screenSize,
+      viewport_size: viewportSize,
+      timezone: timezone,
+      cookies_enabled: navigator.cookieEnabled ? "1" : "0",
+      utm_source: params.get("utm_source") || "",
+      utm_medium: params.get("utm_medium") || "",
+      utm_campaign: params.get("utm_campaign") || "",
+      utm_content: params.get("utm_content") || "",
+      utm_term: params.get("utm_term") || ""
+    };
+  }
+
   if (form) {
     form.addEventListener("submit", async function (event) {
       event.preventDefault();
@@ -94,6 +127,7 @@ document.addEventListener("DOMContentLoaded", function () {
         location: data.get("location") || "",
         source_url: window.location.href
       };
+      Object.assign(leadData, getLeadTrackingData());
       var message = [
         "New Izin Designs Consultation Enquiry",
         "",

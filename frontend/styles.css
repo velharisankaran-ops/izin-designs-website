@@ -461,14 +461,19 @@ img {
 }
 
 .video-slider {
+  --video-card-width: 340px;
   max-width: 1240px;
   margin: 0 auto;
   padding: 0 24px 16px;
   display: flex;
   gap: 18px;
   overflow-x: auto;
+  overflow-y: hidden;
   scroll-snap-type: x mandatory;
+  scroll-padding-inline: 24px;
   scrollbar-gutter: stable;
+  overscroll-behavior-inline: contain;
+  -webkit-overflow-scrolling: touch;
 }
 
 .video-slider::-webkit-scrollbar {
@@ -481,16 +486,9 @@ img {
 }
 
 .video-card {
-  flex: 0 0 340px;
+  flex: 0 0 var(--video-card-width);
+  max-width: var(--video-card-width);
   scroll-snap-align: start;
-}
-
-.primary-video {
-  flex-basis: 340px;
-}
-
-.testimonial-card {
-  flex-basis: 340px;
 }
 
 .izin-shorts-video {
@@ -502,7 +500,7 @@ img {
   background: #000000;
 }
 
-.primary-video .izin-shorts-video {
+.video-card:first-child .izin-shorts-video {
   box-shadow: 0 22px 56px rgba(0, 0, 0, 0.22);
 }
 
@@ -1268,20 +1266,14 @@ img {
     padding-right: 16px;
   }
 
+  .video-slider {
+    --video-card-width: 78vw;
+    gap: 14px;
+    scroll-padding-inline: 16px;
+  }
+
   .video-section-head {
     margin-bottom: 14px;
-  }
-
-  .video-card {
-    flex-basis: 78vw;
-  }
-
-  .primary-video {
-    flex-basis: 78vw;
-  }
-
-  .testimonial-card {
-    flex-basis: 78vw;
   }
 
   .izin-form-close {

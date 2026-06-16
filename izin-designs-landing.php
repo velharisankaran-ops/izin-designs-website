@@ -12,6 +12,7 @@ if (!defined('ABSPATH')) {
 }
 
 require_once plugin_dir_path(__FILE__) . 'includes/izin-leads.php';
+require_once plugin_dir_path(__FILE__) . 'includes/izin-video-section.php';
 
 register_activation_hook(__FILE__, 'izin_leads_install');
 
@@ -35,6 +36,7 @@ function izin_designs_landing_shortcode() {
     $script_version = file_exists($script_path) ? (string) filemtime($script_path) : '1.0.0';
     $html = str_replace('href="styles.css"', 'href="styles.css?ver=' . rawurlencode($styles_version) . '"', $html);
     $html = str_replace('src="script.js"', 'src="script.js?ver=' . rawurlencode($script_version) . '"', $html);
+    $html = izin_designs_inject_video_section($html);
 
     $base_tag = '<base href="' . esc_url($frontend_url) . '">';
     $resize_script = <<<'HTML'

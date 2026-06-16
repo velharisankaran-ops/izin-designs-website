@@ -7,6 +7,8 @@ get_header();
 ?>
 
 <?php
+require_once get_template_directory() . '/includes/izin-video-section.php';
+
 $frontend_path = get_template_directory() . '/frontend/index.html';
 
 if (file_exists($frontend_path)) {
@@ -23,6 +25,7 @@ if (file_exists($frontend_path)) {
         $body = str_replace('<script src="script.js"></script>', '', $body);
         $body = str_replace('href="frontend/', 'href="' . esc_url(get_template_directory_uri() . '/frontend/'), $body);
         $body = str_replace('src="frontend/', 'src="' . esc_url(get_template_directory_uri() . '/frontend/'), $body);
+        $body = izin_designs_inject_video_section($body);
 
         echo $body; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
     }

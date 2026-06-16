@@ -250,6 +250,29 @@ function izin_leads_admin_menu() {
 }
 add_action('admin_menu', 'izin_leads_admin_menu');
 
+function izin_leads_delete_admin_action() {
+    if (!current_user_can('manage_options')) {
+        wp_die(esc_html__('You do not have permission to delete leads.', 'izin-designs-theme'));
+    }
+
+    $lead_id = absint($_GET['lead_id'] ?? 0);
+
+    if ($lead_id <= 0) {
+        wp_safe_redirect(admin_url('admin.php?page=izin-leads'));
+        exit;
+    }
+
+    check_admin_referer('izin_delete_lead_' . $lead_id);
+
+    global $wpdb;
+    izin_leads_install();
+    $wpdb->delete(izin_leads_table_name(), array('id' => $lead_id), array('%d'));
+
+    wp_safe_redirect(add_query_arg('izin_lead_deleted', '1', admin_url('admin.php?page=izin-leads')));
+    exit;
+}
+add_action('admin_post_izin_delete_lead', 'izin_leads_delete_admin_action');
+
 function izin_leads_admin_page() {
     global $wpdb;
 
@@ -262,9 +285,33 @@ function izin_leads_admin_page() {
         <h1><?php esc_html_e('Izin Leads', 'izin-designs-theme'); ?></h1>
         <p><?php esc_html_e('Latest consultation enquiries submitted from the website form.', 'izin-designs-theme'); ?></p>
 
+        <?php if (!empty($_GET['izin_lead_deleted'])): ?>
+            <div class="notice notice-success is-dismissible">
+                <p><?php esc_html_e('Lead deleted.', 'izin-designs-theme'); ?></p>
+            </div>
+        <?php endif; ?>
+
+        <style>
+            .izin-delete-lead {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                width: 28px;
+                height: 28px;
+                color: #b32d2e;
+                text-decoration: none;
+            }
+
+            .izin-delete-lead:hover,
+            .izin-delete-lead:focus {
+                color: #8a2424;
+            }
+        </style>
+
         <table class="widefat striped">
             <thead>
                 <tr>
+                    <th style="width: 42px;"><span class="screen-reader-text"><?php esc_html_e('Actions', 'izin-designs-theme'); ?></span></th>
                     <th><?php esc_html_e('Date', 'izin-designs-theme'); ?></th>
                     <th><?php esc_html_e('Name', 'izin-designs-theme'); ?></th>
                     <th><?php esc_html_e('Phone', 'izin-designs-theme'); ?></th>
@@ -281,11 +328,22 @@ function izin_leads_admin_page() {
             <tbody>
                 <?php if (empty($leads)): ?>
                     <tr>
-                        <td colspan="11"><?php esc_html_e('No leads found yet.', 'izin-designs-theme'); ?></td>
+                        <td colspan="12"><?php esc_html_e('No leads found yet.', 'izin-designs-theme'); ?></td>
                     </tr>
                 <?php else: ?>
                     <?php foreach ($leads as $lead): ?>
                         <tr>
+                            <td>
+                                <a
+                                    class="izin-delete-lead"
+                                    href="<?php echo esc_url(wp_nonce_url(admin_url('admin-post.php?action=izin_delete_lead&lead_id=' . absint($lead->id)), 'izin_delete_lead_' . absint($lead->id))); ?>"
+                                    onclick="return confirm('<?php echo esc_js(__('Delete this lead?', 'izin-designs-theme')); ?>');"
+                                    title="<?php esc_attr_e('Delete lead', 'izin-designs-theme'); ?>"
+                                    aria-label="<?php esc_attr_e('Delete lead', 'izin-designs-theme'); ?>"
+                                >
+                                    <span class="dashicons dashicons-trash" aria-hidden="true"></span>
+                                </a>
+                            </td>
                             <td><?php echo esc_html($lead->created_at); ?></td>
                             <td><?php echo esc_html($lead->name); ?></td>
                             <td>

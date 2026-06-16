@@ -73,12 +73,28 @@ if (!function_exists('izin_designs_video_section_markup')) {
         }
 
         .izin-shorts-video iframe,
-        .izin-shorts-video video {
+        .izin-shorts-video video,
+        .izin-video-card-placeholder {
           width: 100%;
           height: 100%;
           display: block;
           object-fit: cover;
           border: 0;
+        }
+
+        .izin-video-card-placeholder {
+          display: grid;
+          place-items: end start;
+          padding: 18px;
+          background:
+            linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(0, 0, 0, 0.2)),
+            #151515;
+        }
+
+        .izin-video-card-placeholder span {
+          font-size: 13px;
+          letter-spacing: 0.08em;
+          color: rgba(255, 255, 255, 0.78);
         }
 
         @media (max-width: 767px) {
@@ -109,31 +125,33 @@ if (!function_exists('izin_designs_video_section_markup')) {
         <div class="video-slider video-rail" aria-label="Izin Designs video slider">
           <article class="video-card">
             <div class="izin-shorts-video">
-              <iframe src="https://www.youtube.com/embed/2_LoA7vSiA8" title="Izin Designs YouTube Shorts Video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+              <div class="izin-video-card-placeholder">
+                <span>01</span>
+              </div>
             </div>
           </article>
 
           <article class="video-card">
             <div class="izin-shorts-video">
-              <video controls playsinline preload="metadata" aria-label="Izin Designs Rahul Rajagopal project video">
-                <source src="https://izindesigns.com/wp-content/uploads/2026/06/Rahul-Rajagopal.mp4" type="video/mp4">
-              </video>
+              <div class="izin-video-card-placeholder">
+                <span>02</span>
+              </div>
             </div>
           </article>
 
           <article class="video-card">
             <div class="izin-shorts-video">
-              <video controls playsinline preload="metadata" aria-label="Izin Designs Jayasurya and his wife client testimonial">
-                <source src="https://izindesigns.com/wp-content/uploads/2026/06/Jayasurya-and-his-wife.mp4" type="video/mp4">
-              </video>
+              <div class="izin-video-card-placeholder">
+                <span>03</span>
+              </div>
             </div>
           </article>
 
           <article class="video-card">
             <div class="izin-shorts-video">
-              <video controls playsinline preload="metadata" aria-label="Izin Designs Lakshmi new flat client testimonial">
-                <source src="https://izindesigns.com/wp-content/uploads/2026/06/Lakshmis-new-flat.mp4" type="video/mp4">
-              </video>
+              <div class="izin-video-card-placeholder">
+                <span>04</span>
+              </div>
             </div>
           </article>
         </div>

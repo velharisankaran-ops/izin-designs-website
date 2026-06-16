@@ -8,10 +8,11 @@
 get_header();
 ?>
 
+<?php get_template_part('template-parts/site-nav'); ?>
+
 <main class="career-page">
   <section class="career-hero">
     <div class="career-hero-copy">
-      <a class="career-back-link" href="<?php echo esc_url(home_url('/')); ?>">Izin Designs</a>
       <span class="izin-small-label">Careers</span>
       <h1>Build thoughtful interiors with Izin Designs.</h1>
       <p>Join our interior studio in Kochi and work across residential, commercial, modular kitchen, bespoke furniture and turnkey execution projects.</p>
@@ -120,6 +121,8 @@ get_header();
     </div>
   </section>
 </main>
+
+<?php get_template_part('template-parts/site-footer'); ?>
 
 <?php
 get_footer();

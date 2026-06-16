@@ -8,6 +8,7 @@ if (!defined('ABSPATH')) {
 }
 
 require_once get_template_directory() . '/includes/izin-leads.php';
+require_once get_template_directory() . '/includes/izin-careers.php';
 
 function izin_designs_theme_setup() {
     add_theme_support('title-tag');
@@ -50,5 +51,23 @@ function izin_designs_theme_activate() {
     if (function_exists('izin_leads_install')) {
         izin_leads_install();
     }
+
+    if (function_exists('izin_careers_install')) {
+        izin_careers_install();
+    }
 }
 add_action('after_switch_theme', 'izin_designs_theme_activate');
+
+function izin_designs_ensure_career_page() {
+    if (get_page_by_path('career')) {
+        return;
+    }
+
+    wp_insert_post(array(
+        'post_title' => 'Career',
+        'post_name' => 'career',
+        'post_status' => 'publish',
+        'post_type' => 'page',
+    ));
+}
+add_action('init', 'izin_designs_ensure_career_page');

@@ -188,6 +188,57 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
+  var careerForm = document.querySelector("[data-career-form]");
+
+  if (careerForm) {
+    careerForm.addEventListener("submit", async function (event) {
+      event.preventDefault();
+
+      var status = careerForm.querySelector("[data-career-status]");
+      var submitButton = careerForm.querySelector(".career-submit");
+      var data = new FormData(careerForm);
+      data.append("source_url", window.location.href);
+
+      if (status) {
+        status.textContent = "";
+        status.classList.remove("is-error", "is-success");
+      }
+
+      if (submitButton) {
+        submitButton.disabled = true;
+        submitButton.textContent = "Submitting...";
+      }
+
+      try {
+        var response = await fetch("/wp-json/izin-careers/v1/apply", {
+          method: "POST",
+          body: data
+        });
+        var result = await response.json().catch(function () { return {}; });
+
+        if (!response.ok || !result.success) {
+          throw new Error(result.message || "Application could not be submitted.");
+        }
+
+        careerForm.reset();
+        if (status) {
+          status.textContent = "Application submitted. Our team will review your profile.";
+          status.classList.add("is-success");
+        }
+      } catch (error) {
+        if (status) {
+          status.textContent = error.message || "Application could not be submitted.";
+          status.classList.add("is-error");
+        }
+      } finally {
+        if (submitButton) {
+          submitButton.disabled = false;
+          submitButton.textContent = "Submit Application";
+        }
+      }
+    });
+  }
+
   var counters = document.querySelectorAll(".izin-metric-number");
   var animated = false;
 

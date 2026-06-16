@@ -112,6 +112,30 @@ document.addEventListener("DOMContentLoaded", function () {
     };
   }
 
+  function trackLeadConversion() {
+    if (typeof window.gtag !== "function") {
+      return Promise.resolve();
+    }
+
+    return new Promise(function (resolve) {
+      var resolved = false;
+
+      function finish() {
+        if (resolved) return;
+        resolved = true;
+        resolve();
+      }
+
+      window.gtag("event", "conversion", {
+        send_to: "AW-18188025014/GQ_mCJG6rbQcELb53OBD",
+        event_callback: finish,
+        event_timeout: 1200
+      });
+
+      setTimeout(finish, 1300);
+    });
+  }
+
   if (form) {
     form.addEventListener("submit", async function (event) {
       event.preventDefault();
@@ -159,6 +183,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // Continue to WhatsApp even if the lead endpoint is unavailable.
       }
 
+      await trackLeadConversion();
       window.location.href = whatsappURL;
     });
   }

@@ -197,28 +197,60 @@ img {
 .izin-hero {
   position: relative;
   width: 100%;
-  min-height: 68vh;
+  min-height: calc(100vh - 76px);
   overflow: hidden;
   background: url("https://izindesigns.com/wp-content/uploads/2026/06/izin-designs-interior-studio.png") center center / cover no-repeat;
 }
 
-.izin-hero-inner {
-  position: relative;
-  z-index: 2;
-  width: 100%;
-  max-width: 1240px;
-  min-height: 68vh;
+.izin-intro-section {
+  background: #ffffff;
+  border-bottom: 1px solid var(--line);
+}
+
+.izin-intro-inner {
+  width: min(1240px, calc(100% - 48px));
   margin: 0 auto;
-  padding: 42px 24px;
+  padding: 44px 0 40px;
   display: grid;
   grid-template-columns: minmax(0, 1fr) 390px;
-  align-items: center;
+  align-items: start;
   gap: 46px;
 }
 
 .izin-hero-title {
   max-width: 760px;
   color: #ffffff;
+}
+
+.izin-intro-copy {
+  color: var(--ink);
+}
+
+.izin-intro-copy .izin-small-label {
+  border-bottom-color: rgba(43, 42, 50, 0.18);
+  color: var(--pink);
+  text-shadow: none;
+}
+
+.izin-intro-copy h1 {
+  color: var(--ink);
+  text-shadow: none;
+}
+
+.izin-intro-copy h1 span {
+  color: var(--gold);
+}
+
+.izin-intro-copy .izin-hero-sub {
+  color: var(--muted);
+  text-shadow: none;
+}
+
+.izin-intro-copy .izin-hero-tags span {
+  border-color: rgba(43, 42, 50, 0.12);
+  background: #f7f4f0;
+  color: var(--ink);
+  backdrop-filter: none;
 }
 
 .izin-small-label {
@@ -316,6 +348,27 @@ img {
   border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 22px 60px rgba(0, 0, 0, 0.38);
+}
+
+.izin-intro-copy.izin-hero-title h1 {
+  color: var(--ink);
+  text-shadow: none;
+}
+
+.izin-intro-copy.izin-hero-title h1 span {
+  color: var(--gold);
+}
+
+.izin-intro-copy .izin-hero-sub {
+  color: var(--muted);
+  text-shadow: none;
+}
+
+.izin-intro-copy .izin-hero-tags span {
+  border-color: rgba(43, 42, 50, 0.12);
+  background: #f7f4f0;
+  color: var(--ink);
+  backdrop-filter: none;
 }
 
 .izin-form-head {
@@ -1733,10 +1786,9 @@ img {
 }
 
 @media (max-width: 1024px) {
-  .izin-hero-inner {
+  .izin-intro-inner {
     grid-template-columns: minmax(0, 1fr) 360px;
     gap: 30px;
-    padding: 34px 20px;
   }
 }
 
@@ -1833,36 +1885,18 @@ img {
 
   .izin-hero {
     min-height: 485px;
-    overflow: visible;
-    background: #ffffff;
-    padding-bottom: 34px;
   }
 
-  .izin-hero::before {
-    content: "";
-    position: absolute;
-    inset: 0 0 auto;
-    height: 485px;
-    z-index: 1;
-    background: url("https://izindesigns.com/wp-content/uploads/2026/06/izin-designs-interior-studio.png") center center / cover no-repeat;
+  .izin-intro-inner {
+    width: calc(100% - 32px);
+    padding: 30px 0 34px;
+    grid-template-columns: 1fr;
+    gap: 22px;
   }
 
-  .izin-hero-inner {
-    min-height: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    gap: 0;
-    padding: 30px 16px 0;
-  }
-
-  .izin-hero-title {
-    min-height: 345px;
+  .izin-intro-copy {
+    min-height: 0;
     max-width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding-right: 4px;
   }
 
   .izin-small-label {
@@ -1871,27 +1905,27 @@ img {
     margin-bottom: 10px;
   }
 
-  .izin-hero-title h1 {
+  .izin-intro-copy h1 {
     max-width: 360px;
     font-size: clamp(36px, 10vw, 44px);
     line-height: 1.02;
     letter-spacing: -0.02em;
   }
 
-  .izin-hero-title h1 span {
+  .izin-intro-copy h1 span {
     font-size: 17px;
   }
 
-  .izin-hero-sub {
-    max-width: 345px;
+  .izin-intro-copy .izin-hero-sub {
+    max-width: 100%;
     font-size: 11.5px;
   }
 
-  .izin-hero-tags {
+  .izin-intro-copy .izin-hero-tags {
     display: none;
   }
 
-  .mobile-consultation-btn {
+  .izin-intro-copy .mobile-consultation-btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -1899,11 +1933,10 @@ img {
 
   .izin-form-card {
     position: relative;
-    z-index: 3;
     display: none;
-    margin-top: 10px;
+    margin-top: 0;
     border-radius: 15px;
-    box-shadow: 0 18px 42px rgba(0, 0, 0, 0.22);
+    box-shadow: 0 18px 42px rgba(0, 0, 0, 0.14);
   }
 
   .izin-form-card.is-open {
@@ -1954,8 +1987,6 @@ img {
   }
 
   .shorts-section {
-    position: relative;
-    z-index: 4;
     padding: 34px 0;
   }
 

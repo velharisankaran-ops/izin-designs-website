@@ -199,9 +199,7 @@ img {
   width: 100%;
   min-height: 68vh;
   overflow: hidden;
-  background:
-    linear-gradient(90deg, rgba(0, 0, 0, 0.60) 0%, rgba(0, 0, 0, 0.40) 45%, rgba(0, 0, 0, 0.20) 100%),
-    url("https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&q=85&w=2000") center / cover no-repeat;
+  background: url("https://izindesigns.com/wp-content/uploads/2026/06/izin-designs-interior-studio.png") center center / cover no-repeat;
 }
 
 .izin-hero-inner {
@@ -1846,9 +1844,7 @@ img {
     inset: 0 0 auto;
     height: 485px;
     z-index: 1;
-    background:
-      linear-gradient(180deg, rgba(0, 0, 0, 0.70) 0%, rgba(0, 0, 0, 0.52) 56%, rgba(0, 0, 0, 0.24) 100%),
-      url("https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&q=85&w=1200") center / cover no-repeat;
+    background: url("https://izindesigns.com/wp-content/uploads/2026/06/izin-designs-interior-studio.png") center center / cover no-repeat;
   }
 
   .izin-hero-inner {

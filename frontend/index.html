@@ -50,89 +50,86 @@
               <span>Commercial Interiors</span>
               <span>Turnkey Execution</span>
             </div>
-            <button class="mobile-consultation-btn" type="button" data-consultation-open>Get Free Consultation</button>
           </div>
 
           <div class="izin-form-card">
             <div class="izin-form-head">
               <small>Free Consultation</small>
               <h3>Tell us about your project</h3>
-              <button class="izin-form-close" type="button" aria-label="Close consultation form" data-consultation-close>×</button>
             </div>
-            <form class="izin-form-body" data-lead-form>
+          <form class="izin-form-body" data-lead-form>
+            <div class="izin-field">
+              <label for="izinName">Name *</label>
+              <input type="text" id="izinName" name="name" placeholder="Your name" required>
+            </div>
+            <div class="izin-field">
+              <label for="izinPhone">Phone *</label>
+              <input type="tel" id="izinPhone" name="phone" placeholder="Phone number" required>
+            </div>
+            <div class="izin-form-grid">
               <div class="izin-field">
-                <label for="izinName">Name *</label>
-                <input type="text" id="izinName" name="name" placeholder="Your name" required>
-              </div>
-              <div class="izin-field">
-                <label for="izinPhone">Phone *</label>
-                <input type="tel" id="izinPhone" name="phone" placeholder="Phone number" required>
-              </div>
-              <div class="izin-form-grid">
-                <div class="izin-field">
-                  <label for="izinProperty">Property Type *</label>
-                  <select id="izinProperty" name="property_type" required>
-                    <option value="">Select</option>
-                    <option>Apartment / Flat</option>
-                    <option>Villa</option>
-                    <option>Independent House</option>
-                    <option>Office</option>
-                    <option>Showroom</option>
-                    <option>Cafe / Restaurant</option>
-                    <option>Renovation</option>
-                    <option>Other</option>
-                  </select>
-                </div>
-                <div class="izin-field">
-                  <label for="izinBudget">Budget *</label>
-                  <select id="izinBudget" name="budget" required>
-                    <option value="">Select</option>
-                    <option>Below Rs. 5 Lakhs</option>
-                    <option>Rs. 5 - Rs. 10 Lakhs</option>
-                    <option>Rs. 10 - Rs. 20 Lakhs</option>
-                    <option>Rs. 20 - Rs. 35 Lakhs</option>
-                    <option>Rs. 35 - Rs. 50 Lakhs</option>
-                    <option>Above Rs. 50 Lakhs</option>
-                    <option>Need guidance</option>
-                  </select>
-                </div>
-              </div>
-              <div class="izin-form-grid">
-                <div class="izin-field">
-                  <label for="izinEmail">Email</label>
-                  <input type="email" id="izinEmail" name="email" placeholder="Optional">
-                </div>
-                <div class="izin-field">
-                  <label for="izinSqft">Sq.Ft</label>
-                  <select id="izinSqft" name="sqft">
-                    <option value="">Select</option>
-                    <option>Below 500 sq.ft</option>
-                    <option>500 - 1000 sq.ft</option>
-                    <option>1000 - 1500 sq.ft</option>
-                    <option>1500 - 2500 sq.ft</option>
-                    <option>2500 - 4000 sq.ft</option>
-                    <option>Above 4000 sq.ft</option>
-                  </select>
-                </div>
-              </div>
-              <div class="izin-field">
-                <label for="izinLocation">Location</label>
-                <select id="izinLocation" name="location">
+                <label for="izinProperty">Property Type *</label>
+                <select id="izinProperty" name="property_type" required>
                   <option value="">Select</option>
-                  <option>Kochi</option>
-                  <option>Aluva</option>
-                  <option>Edappally</option>
-                  <option>Kakkanad</option>
-                  <option>Thrippunithura</option>
-                  <option>Angamaly</option>
-                  <option>Ernakulam District</option>
-                  <option>Other Kerala Location</option>
+                  <option>Apartment / Flat</option>
+                  <option>Villa</option>
+                  <option>Independent House</option>
+                  <option>Office</option>
+                  <option>Showroom</option>
+                  <option>Cafe / Restaurant</option>
+                  <option>Renovation</option>
+                  <option>Other</option>
                 </select>
               </div>
-              <button class="izin-submit" type="submit">Get Free Consultation</button>
-              <p class="izin-form-note">Submit opens WhatsApp with your project details.</p>
-            </form>
-          </div>
+              <div class="izin-field">
+                <label for="izinBudget">Budget *</label>
+                <select id="izinBudget" name="budget" required>
+                  <option value="">Select</option>
+                  <option>Below Rs. 5 Lakhs</option>
+                  <option>Rs. 5 - Rs. 10 Lakhs</option>
+                  <option>Rs. 10 - Rs. 20 Lakhs</option>
+                  <option>Rs. 20 - Rs. 35 Lakhs</option>
+                  <option>Rs. 35 - Rs. 50 Lakhs</option>
+                  <option>Above Rs. 50 Lakhs</option>
+                  <option>Need guidance</option>
+                </select>
+              </div>
+            </div>
+            <div class="izin-form-grid">
+              <div class="izin-field">
+                <label for="izinEmail">Email</label>
+                <input type="email" id="izinEmail" name="email" placeholder="Optional">
+              </div>
+              <div class="izin-field">
+                <label for="izinSqft">Sq.Ft</label>
+                <select id="izinSqft" name="sqft">
+                  <option value="">Select</option>
+                  <option>Below 500 sq.ft</option>
+                  <option>500 - 1000 sq.ft</option>
+                  <option>1000 - 1500 sq.ft</option>
+                  <option>1500 - 2500 sq.ft</option>
+                  <option>2500 - 4000 sq.ft</option>
+                  <option>Above 4000 sq.ft</option>
+                </select>
+              </div>
+            </div>
+            <div class="izin-field">
+              <label for="izinLocation">Location</label>
+              <select id="izinLocation" name="location">
+                <option value="">Select</option>
+                <option>Kochi</option>
+                <option>Aluva</option>
+                <option>Edappally</option>
+                <option>Kakkanad</option>
+                <option>Thrippunithura</option>
+                <option>Angamaly</option>
+                <option>Ernakulam District</option>
+                <option>Other Kerala Location</option>
+              </select>
+            </div>
+            <button class="izin-submit" type="submit">Get Free Consultation</button>
+            <p class="izin-form-note">Submit opens WhatsApp with your project details.</p>
+          </form>
         </div>
       </section>
 

@@ -44,39 +44,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  var consultationForm = document.querySelector(".izin-form-card");
-  var consultationOpen = document.querySelector("[data-consultation-open]");
-  var consultationClose = document.querySelector("[data-consultation-close]");
-
-  function openConsultationForm() {
-    if (!consultationForm) return;
-    consultationForm.classList.add("is-open");
-    consultationForm.scrollIntoView({ behavior: "smooth", block: "center" });
-  }
-
-  function closeConsultationForm() {
-    if (!consultationForm) return;
-    consultationForm.classList.remove("is-open");
-    if (consultationOpen && window.matchMedia("(max-width: 767px)").matches) {
-      consultationOpen.scrollIntoView({ behavior: "smooth", block: "center" });
-    }
-  }
-
-  if (consultationOpen) {
-    consultationOpen.addEventListener("click", openConsultationForm);
-  }
-
-  if (consultationClose) {
-    consultationClose.addEventListener("click", closeConsultationForm);
-  }
-
-  var consultationAnchors = document.querySelectorAll('a[href="#consultation"]');
-  consultationAnchors.forEach(function (anchor) {
-    anchor.addEventListener("click", function () {
-      openConsultationForm();
-    });
-  });
-
   var form = document.querySelector("[data-lead-form]");
 
   function getLeadTrackingData() {

@@ -197,7 +197,9 @@ img {
 .izin-hero {
   position: relative;
   width: 100%;
-  min-height: calc(100vh - 76px);
+  height: calc(100svh - 76px);
+  min-height: calc(100svh - 76px);
+  max-height: calc(100svh - 76px);
   overflow: hidden;
   background: url("https://izindesigns.com/wp-content/uploads/2026/06/izin-designs-interior-studio.png") center center / cover no-repeat;
 }
@@ -1884,7 +1886,10 @@ img {
   }
 
   .izin-hero {
-    min-height: 485px;
+    height: calc(100svh - 68px);
+    min-height: calc(100svh - 68px);
+    max-height: calc(100svh - 68px);
+    background: url("https://izindesigns.com/wp-content/uploads/2026/06/izin-designs-hero-image-mobile.png") center center / cover no-repeat;
   }
 
   .izin-intro-inner {
@@ -1932,15 +1937,9 @@ img {
   }
 
   .izin-form-card {
-    position: relative;
-    display: none;
     margin-top: 0;
     border-radius: 15px;
     box-shadow: 0 18px 42px rgba(0, 0, 0, 0.14);
-  }
-
-  .izin-form-card.is-open {
-    display: block;
   }
 
   .career-hero,

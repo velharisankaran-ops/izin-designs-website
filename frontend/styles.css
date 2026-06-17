@@ -196,11 +196,15 @@ img {
 
 .izin-hero {
   position: relative;
-  width: 100%;
-  height: calc(100svh - 76px);
-  min-height: calc(100svh - 76px);
-  max-height: calc(100svh - 76px);
+  width: min(1240px, calc(100% - 48px));
+  margin: 24px auto 0;
+  aspect-ratio: 1179 / 477;
+  height: auto;
+  min-height: 0;
+  max-height: none;
   overflow: hidden;
+  border-radius: 24px;
+  box-shadow: 0 24px 60px rgba(17, 17, 20, 0.16);
   background: url("https://izindesigns.com/wp-content/uploads/2026/06/izin-designs-interior-studio.png") center center / cover no-repeat;
 }
 
@@ -1886,9 +1890,13 @@ img {
   }
 
   .izin-hero {
+    width: 100%;
+    margin: 0;
     height: calc(100svh - 68px);
     min-height: calc(100svh - 68px);
     max-height: calc(100svh - 68px);
+    border-radius: 0;
+    box-shadow: none;
     background: url("https://izindesigns.com/wp-content/uploads/2026/06/izin-designs-hero-image-mobile.png") center center / cover no-repeat;
   }
 

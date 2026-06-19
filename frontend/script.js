@@ -263,4 +263,50 @@ document.addEventListener("DOMContentLoaded", function () {
 
   if (prev) prev.addEventListener("click", function () { slideGallery(-1); });
   if (next) next.addEventListener("click", function () { slideGallery(1); });
+
+  var packageGallery = document.querySelector("[data-package-gallery]");
+  if (packageGallery) {
+    var packageSlides = Array.prototype.slice.call(packageGallery.querySelectorAll("[data-package-slide]"));
+    var packageDetails = Array.prototype.slice.call(packageGallery.querySelectorAll("[data-package-detail]"));
+    var packageThumbs = Array.prototype.slice.call(packageGallery.querySelectorAll("[data-package-thumb]"));
+    var packagePrev = packageGallery.querySelector("[data-package-prev]");
+    var packageNext = packageGallery.querySelector("[data-package-next]");
+    var packageIndex = packageSlides.findIndex(function (slide) { return slide.classList.contains("is-active"); });
+
+    if (packageIndex < 0) packageIndex = 0;
+
+    function setPackageSlide(nextIndex) {
+      packageIndex = (nextIndex + packageSlides.length) % packageSlides.length;
+
+      packageSlides.forEach(function (slide, index) {
+        slide.classList.toggle("is-active", index === packageIndex);
+      });
+
+      packageDetails.forEach(function (detail, index) {
+        detail.classList.toggle("is-active", index === packageIndex);
+      });
+
+      packageThumbs.forEach(function (thumb, index) {
+        thumb.classList.toggle("is-active", index === packageIndex);
+      });
+    }
+
+    if (packagePrev) {
+      packagePrev.addEventListener("click", function () {
+        setPackageSlide(packageIndex - 1);
+      });
+    }
+
+    if (packageNext) {
+      packageNext.addEventListener("click", function () {
+        setPackageSlide(packageIndex + 1);
+      });
+    }
+
+    packageThumbs.forEach(function (thumb, index) {
+      thumb.addEventListener("click", function () {
+        setPackageSlide(index);
+      });
+    });
+  }
 });

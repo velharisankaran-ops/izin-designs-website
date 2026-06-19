@@ -75,6 +75,25 @@ function izin_designs_ensure_career_page() {
 }
 add_action('init', 'izin_designs_ensure_career_page');
 
+function izin_designs_package_page_slug() {
+    return '3bhk-interior-package-kochi-aluva';
+}
+
+function izin_designs_ensure_package_page() {
+    if (get_page_by_path(izin_designs_package_page_slug())) {
+        return;
+    }
+
+    wp_insert_post(array(
+        'post_title'   => '3BHK Interior Package',
+        'post_name'    => izin_designs_package_page_slug(),
+        'post_status'  => 'publish',
+        'post_type'    => 'page',
+        'post_content' => '',
+    ));
+}
+add_action('init', 'izin_designs_ensure_package_page');
+
 function izin_designs_body_classes($classes) {
     if (is_single()) {
         $classes[] = 'izin-single-post';
@@ -96,23 +115,96 @@ function izin_designs_body_classes($classes) {
 }
 add_filter('body_class', 'izin_designs_body_classes');
 
-function izin_designs_rank_math_home_title($title) {
+function izin_designs_is_package_page() {
+    return is_page(izin_designs_package_page_slug());
+}
+
+function izin_designs_package_seo_title() {
+    return '3BHK Interior Package in Kochi & Aluva | ₹4,99,999 | Izin Designs';
+}
+
+function izin_designs_package_meta_description() {
+    return 'Get a complete 3BHK interior package in Kochi and Aluva for ₹4,99,999. Includes WPC kitchen, wardrobes, beds, sofa, TV unit and centre table by Izin Designs Interior Studio.';
+}
+
+function izin_designs_document_title_parts($title_parts) {
+    if (izin_designs_is_package_page()) {
+        $title_parts['title'] = izin_designs_package_seo_title();
+    }
+
+    return $title_parts;
+}
+add_filter('document_title_parts', 'izin_designs_document_title_parts');
+
+function izin_designs_rank_math_title($title) {
     if (is_front_page()) {
         return 'Interior Designers in Kochi | IZIN Designs Interior Studio';
     }
 
+    if (izin_designs_is_package_page()) {
+        return izin_designs_package_seo_title();
+    }
+
     return $title;
 }
-add_filter('rank_math/frontend/title', 'izin_designs_rank_math_home_title');
+add_filter('rank_math/frontend/title', 'izin_designs_rank_math_title');
 
-function izin_designs_rank_math_home_description($description) {
+function izin_designs_rank_math_description($description) {
     if (is_front_page()) {
         return 'Custom home and commercial interior design in Kochi and Aluva, Kerala. Modular kitchens, bespoke furniture, turnkey execution and consultation.';
     }
 
+    if (izin_designs_is_package_page()) {
+        return izin_designs_package_meta_description();
+    }
+
     return $description;
 }
-add_filter('rank_math/frontend/description', 'izin_designs_rank_math_home_description');
+add_filter('rank_math/frontend/description', 'izin_designs_rank_math_description');
+
+function izin_designs_package_head_meta() {
+    if (!izin_designs_is_package_page()) {
+        return;
+    }
+
+    $title = izin_designs_package_seo_title();
+    $description = izin_designs_package_meta_description();
+    $url = get_permalink();
+    ?>
+    <?php if (!defined('RANK_MATH_VERSION')) : ?>
+    <meta name="description" content="<?php echo esc_attr($description); ?>">
+    <link rel="canonical" href="<?php echo esc_url($url); ?>">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="<?php echo esc_attr($title); ?>">
+    <meta property="og:description" content="<?php echo esc_attr($description); ?>">
+    <meta property="og:url" content="<?php echo esc_url($url); ?>">
+    <meta property="og:image" content="https://izindesigns.com/wp-content/uploads/2026/06/Cover-Page.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="<?php echo esc_attr($title); ?>">
+    <meta name="twitter:description" content="<?php echo esc_attr($description); ?>">
+    <meta name="twitter:image" content="https://izindesigns.com/wp-content/uploads/2026/06/Cover-Page.png">
+    <?php endif; ?>
+    <script type="application/ld+json">
+    <?php
+    echo wp_json_encode(array(
+        '@context'   => 'https://schema.org',
+        '@type'      => 'FAQPage',
+        'mainEntity' => array(
+            array(
+                '@type'          => 'Question',
+                'name'           => 'What is the price of the 3BHK interior package?',
+                'acceptedAnswer' => array(
+                    '@type' => 'Answer',
+                    'text'  => 'The 3BHK interior package price is ₹4,99,999.',
+                ),
+            ),
+        ),
+    ), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+    ?>
+    </script>
+    <?php
+}
+add_action('wp_head', 'izin_designs_package_head_meta', 5);
 
 function izin_designs_thin_page_slugs() {
     return array('draft-blog-page', 'elementor-page-580');

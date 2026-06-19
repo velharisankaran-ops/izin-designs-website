@@ -9,33 +9,44 @@ get_template_part('template-parts/site-nav');
 
 <main class="izin-package-page">
   <section class="izin-package-hero-shell">
+    <div class="izin-package-hero-media">
+      <img src="https://izindesigns.com/wp-content/uploads/2026/06/Cover-Page.png" alt="3BHK interior package brochure cover by Izin Designs" loading="eager">
+    </div>
+
     <div class="izin-package-hero-copy">
       <?php izin_designs_render_breadcrumbs(); ?>
       <span class="izin-package-eyebrow">3BHK Package</span>
-      <h1>3BHK Interior Package in Kochi &amp; Aluva for ₹4,99,999</h1>
+      <h1>3BHK Interior Package in Kochi &amp; Aluva for &#8377;4,99,999</h1>
       <h2>Complete 3BHK Home Interiors for Modern Kerala Homes</h2>
-      <p>Transform your 3BHK home with a practical and elegant interior package designed for Kerala homes. Izin Designs Interior Studio offers a complete 3BHK interior package for <strong>₹4,99,999</strong>, covering your kitchen, master bedroom, two bedrooms and living area.</p>
-      <p>This package is suitable for apartments, villas and newly built homes in <strong>Kochi, Aluva, Ernakulam and nearby areas</strong>.</p>
+      <p>Designed for apartments, villas and newly built homes across Kochi, Aluva, Ernakulam and nearby areas. This package covers your kitchen, master bedroom, two bedrooms and living area.</p>
 
       <div class="izin-package-hero-points">
-        <div><span>Package Price</span><strong>₹4,99,999</strong></div>
-        <div><span>Includes</span><strong>Kitchen + Master Bedroom + 2 Bedrooms + Living Area</strong></div>
-        <div><span>Special Feature</span><strong>WPC Kitchen Included</strong></div>
+        <div><span>Price</span><strong>&#8377;4,99,999</strong></div>
+        <div><span>Includes</span><strong>Kitchen + 3 Bedrooms + Living Area</strong></div>
+        <div><span>Feature</span><strong>WPC Kitchen Included</strong></div>
       </div>
 
       <a class="izin-package-cta" href="<?php echo esc_url(home_url('/')); ?>#consultation">Book your free consultation today</a>
-    </div>
-
-    <div class="izin-package-hero-media">
-      <img src="https://izindesigns.com/wp-content/uploads/2026/06/Cover-Page.png" alt="3BHK interior package brochure cover by Izin Designs" loading="eager">
     </div>
   </section>
 
   <section class="izin-package-page-section">
     <div class="izin-package-page-head">
       <small>Package Includes</small>
-      <h2>3BHK Interior Package for ₹4,99,999</h2>
-      <p>Izin Designs Interior Studio offers a complete 3BHK interior package for modern Kerala homes. The package includes a WPC kitchen, master bedroom, two bedrooms and living area interiors.</p>
+      <h2>What is included</h2>
+      <p>Everything needed for a clean, practical 3BHK interior setup.</p>
+    </div>
+
+    <div class="izin-package-mobile-compact">
+      <p class="izin-package-mobile-price">&#8377;4,99,999</p>
+      <p><strong>Includes</strong> Kitchen + 3 Bedrooms + Living Area</p>
+      <p><strong>Service Area</strong> Kochi, Aluva &amp; Ernakulam</p>
+      <ul>
+        <li>WPC kitchen with accessories, hood and hob</li>
+        <li>Master bedroom with cot, wardrobe and dressing unit</li>
+        <li>Two additional bedrooms with cot and wardrobe</li>
+        <li>Living area with sofa, TV unit and centre table</li>
+      </ul>
     </div>
 
     <div class="izin-package-includes-grid">
@@ -98,7 +109,7 @@ get_template_part('template-parts/site-nav');
 
     <article class="izin-package-faq-card">
       <h3>What is the price of the 3BHK interior package?</h3>
-      <p>The 3BHK interior package price is <strong>₹4,99,999</strong>.</p>
+      <p>The 3BHK interior package price is <strong>&#8377;4,99,999</strong>.</p>
     </article>
   </section>
 </main>

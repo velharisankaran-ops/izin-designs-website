@@ -156,6 +156,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   var careerForm = document.querySelector("[data-career-form]");
+  var bidProjectForm = document.querySelector("[data-bid-project-form]");
 
   if (careerForm) {
     careerForm.addEventListener("submit", async function (event) {
@@ -201,6 +202,60 @@ document.addEventListener("DOMContentLoaded", function () {
         if (submitButton) {
           submitButton.disabled = false;
           submitButton.textContent = "Submit Application";
+        }
+      }
+    });
+  }
+
+  if (bidProjectForm) {
+    bidProjectForm.addEventListener("submit", async function (event) {
+      event.preventDefault();
+
+      var status = bidProjectForm.querySelector("[data-bid-project-status]");
+      var submitButton = bidProjectForm.querySelector(".career-submit");
+      var data = new FormData(bidProjectForm);
+      var tracking = getLeadTrackingData();
+
+      data.append("source_url", window.location.href);
+      Object.keys(tracking).forEach(function (key) {
+        data.append(key, tracking[key]);
+      });
+
+      if (status) {
+        status.textContent = "";
+        status.classList.remove("is-error", "is-success");
+      }
+
+      if (submitButton) {
+        submitButton.disabled = true;
+        submitButton.textContent = "Submitting...";
+      }
+
+      try {
+        var projectResponse = await fetch("/wp-json/izin-projects/v1/submit", {
+          method: "POST",
+          body: data
+        });
+        var projectResult = await projectResponse.json().catch(function () { return {}; });
+
+        if (!projectResponse.ok || !projectResult.success) {
+          throw new Error(projectResult.message || "Project request could not be submitted.");
+        }
+
+        bidProjectForm.reset();
+        if (status) {
+          status.textContent = "Project request submitted. The Izin team will review your details and get back to you with the next steps.";
+          status.classList.add("is-success");
+        }
+      } catch (error) {
+        if (status) {
+          status.textContent = error.message || "Project request could not be submitted.";
+          status.classList.add("is-error");
+        }
+      } finally {
+        if (submitButton) {
+          submitButton.disabled = false;
+          submitButton.textContent = "Submit Project Request";
         }
       }
     });

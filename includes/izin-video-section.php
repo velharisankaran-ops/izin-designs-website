@@ -9,8 +9,6 @@ if (!defined('ABSPATH')) {
 
 if (!function_exists('izin_designs_homepage_videos')) {
     function izin_designs_homepage_videos() {
-        $fallback_thumb = 'https://izindesigns.com/wp-content/uploads/2026/06/izin-designs-interior-studio.png';
-
         return array(
             array(
                 'slug'          => 'izin-designs-youtube-short',
@@ -30,7 +28,6 @@ if (!function_exists('izin_designs_homepage_videos')) {
                 'type'          => 'mp4',
                 'content_url'   => 'https://izindesigns.com/wp-content/uploads/2026/06/Rahul-Rajagopal.mp4',
                 'watch_url'     => 'https://izindesigns.com/wp-content/uploads/2026/06/Rahul-Rajagopal.mp4',
-                'thumbnail_url' => $fallback_thumb,
             ),
             array(
                 'slug'          => 'jayasurya-client-testimonial',
@@ -40,7 +37,6 @@ if (!function_exists('izin_designs_homepage_videos')) {
                 'type'          => 'mp4',
                 'content_url'   => 'https://izindesigns.com/wp-content/uploads/2026/06/Jayasurya-and-his-wife.mp4',
                 'watch_url'     => 'https://izindesigns.com/wp-content/uploads/2026/06/Jayasurya-and-his-wife.mp4',
-                'thumbnail_url' => $fallback_thumb,
             ),
             array(
                 'slug'          => 'lakshmi-flat-testimonial',
@@ -50,7 +46,6 @@ if (!function_exists('izin_designs_homepage_videos')) {
                 'type'          => 'mp4',
                 'content_url'   => 'https://izindesigns.com/wp-content/uploads/2026/06/Lakshmis-new-flat.mp4',
                 'watch_url'     => 'https://izindesigns.com/wp-content/uploads/2026/06/Lakshmis-new-flat.mp4',
-                'thumbnail_url' => $fallback_thumb,
             ),
         );
     }
@@ -214,7 +209,6 @@ if (!function_exists('izin_designs_video_section_markup')) {
                     controls
                     playsinline
                     preload="metadata"
-                    poster="<?php echo esc_url($video['thumbnail_url']); ?>"
                     aria-label="<?php echo esc_attr($video['title']); ?>"
                   >
                     <source src="<?php echo esc_url($video['content_url']); ?>" type="video/mp4">

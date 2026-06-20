@@ -640,6 +640,57 @@ img {
   border-top: 1px solid var(--line);
 }
 
+.bid-project-page {
+  background: linear-gradient(180deg, rgba(247, 244, 240, 0.98) 0%, rgba(247, 244, 240, 1) 56%, #f5f1eb 100%);
+}
+
+.bid-project-hero {
+  padding-bottom: 74px;
+}
+
+.bid-project-copy h1 {
+  max-width: 760px;
+}
+
+.bid-project-copy p {
+  max-width: 650px;
+}
+
+.bid-project-notes {
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  max-width: 720px;
+}
+
+.bid-project-notes article {
+  padding: 20px 22px;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(24, 24, 24, 0.08);
+  border-radius: 8px;
+  backdrop-filter: blur(10px);
+}
+
+.bid-project-notes h2 {
+  margin: 0 0 10px;
+  font-size: 16px;
+  line-height: 1.3;
+  font-weight: 500;
+}
+
+.bid-project-notes p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+.bid-project-form-card {
+  position: sticky;
+  top: 98px;
+}
+
 .career-role-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -2411,6 +2462,20 @@ img {
   .career-role-grid {
     grid-template-columns: 1fr;
     gap: 0;
+  }
+
+  .bid-project-notes {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-top: 22px;
+  }
+
+  .bid-project-notes article {
+    padding: 18px 18px 16px;
+  }
+
+  .bid-project-form-card {
+    position: static;
   }
 
   .career-roles {

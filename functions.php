@@ -9,6 +9,7 @@ if (!defined('ABSPATH')) {
 
 require_once get_template_directory() . '/includes/izin-leads.php';
 require_once get_template_directory() . '/includes/izin-careers.php';
+require_once get_template_directory() . '/includes/izin-projects.php';
 require_once get_template_directory() . '/includes/izin-video-section.php';
 
 function izin_designs_theme_setup() {
@@ -59,6 +60,10 @@ function izin_designs_theme_activate() {
     if (function_exists('izin_careers_install')) {
         izin_careers_install();
     }
+
+    if (function_exists('izin_projects_install')) {
+        izin_projects_install();
+    }
 }
 add_action('after_switch_theme', 'izin_designs_theme_activate');
 
@@ -75,6 +80,25 @@ function izin_designs_ensure_career_page() {
     ));
 }
 add_action('init', 'izin_designs_ensure_career_page');
+
+function izin_designs_bid_project_page_slug() {
+    return 'bid-project';
+}
+
+function izin_designs_ensure_bid_project_page() {
+    if (get_page_by_path(izin_designs_bid_project_page_slug())) {
+        return;
+    }
+
+    wp_insert_post(array(
+        'post_title'   => 'Bid Project',
+        'post_name'    => izin_designs_bid_project_page_slug(),
+        'post_status'  => 'publish',
+        'post_type'    => 'page',
+        'post_content' => '',
+    ));
+}
+add_action('init', 'izin_designs_ensure_bid_project_page');
 
 function izin_designs_package_page_slug() {
     return '3bhk-interior-package-kochi-aluva';

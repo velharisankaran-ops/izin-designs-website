@@ -28,6 +28,51 @@ function izin_projects_statuses() {
     );
 }
 
+function izin_projects_status_descriptions() {
+    return array(
+        'New'                  => 'Your request has been received and queued for review.',
+        'Under Review'         => 'The team is reviewing your scope, size, and budget requirements.',
+        'Site Visit Scheduled' => 'Project review is moving into site-level coordination and planning.',
+        'Quotation Sent'       => 'Your proposal files are ready and available below.',
+        'Closed'               => 'This request has been completed or formally closed by the team.',
+    );
+}
+
+function izin_projects_status_index($status) {
+    $statuses = izin_projects_statuses();
+    $index = array_search($status, $statuses, true);
+
+    return $index === false ? 0 : (int) $index;
+}
+
+function izin_projects_status_steps($current_status) {
+    $statuses = izin_projects_statuses();
+    $descriptions = izin_projects_status_descriptions();
+    $current_index = izin_projects_status_index($current_status);
+    $steps = array();
+
+    foreach ($statuses as $index => $status) {
+        $state = 'upcoming';
+        if ($index < $current_index) {
+            $state = 'completed';
+        } elseif ($index === $current_index) {
+            $state = 'current';
+        }
+
+        $steps[] = array(
+            'label'       => $status,
+            'state'       => $state,
+            'description' => $descriptions[$status] ?? '',
+        );
+    }
+
+    return $steps;
+}
+
+function izin_projects_should_show_quotation_files($status) {
+    return in_array($status, array('Quotation Sent', 'Closed'), true);
+}
+
 function izin_projects_install() {
     global $wpdb;
 

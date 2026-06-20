@@ -691,6 +691,109 @@ img {
   top: 98px;
 }
 
+.project-status-page {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #f7f4f0 0%, #f4efe8 100%);
+}
+
+.project-status-shell {
+  width: min(980px, calc(100% - 48px));
+  margin: 0 auto;
+  padding: 108px 0 72px;
+}
+
+.project-status-card {
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 32px;
+  box-shadow: 0 22px 60px rgba(20, 20, 20, 0.08);
+}
+
+.project-status-card h1 {
+  margin: 14px 0 16px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(34px, 5vw, 58px);
+  line-height: 0.98;
+  font-weight: 400;
+}
+
+.project-status-card > p {
+  max-width: 700px;
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--muted);
+}
+
+.project-status-summary {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 30px;
+}
+
+.project-status-summary article,
+.project-status-note,
+.project-status-files {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 22px;
+  background: #fcfbf8;
+}
+
+.project-status-summary h2,
+.project-status-note h2,
+.project-status-files h2 {
+  margin: 0 0 10px;
+  font-size: 18px;
+  line-height: 1.35;
+  font-weight: 500;
+}
+
+.project-status-summary p,
+.project-status-note p,
+.project-status-files p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--muted);
+}
+
+.project-status-note,
+.project-status-files {
+  margin-top: 18px;
+}
+
+.project-status-file-list {
+  display: grid;
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.project-status-file {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: #ffffff;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.project-status-file strong,
+.project-status-file span {
+  display: block;
+}
+
+.project-status-file span {
+  font-size: 12px;
+  color: var(--muted);
+}
+
 .career-role-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -2476,6 +2579,32 @@ img {
 
   .bid-project-form-card {
     position: static;
+  }
+
+  .project-status-shell {
+    width: calc(100% - 32px);
+    padding: 88px 0 46px;
+  }
+
+  .project-status-card {
+    padding: 22px 18px;
+  }
+
+  .project-status-summary {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-top: 22px;
+  }
+
+  .project-status-summary article,
+  .project-status-note,
+  .project-status-files {
+    padding: 18px;
+  }
+
+  .project-status-file {
+    flex-direction: column;
+    align-items: flex-start;
   }
 
   .career-roles {

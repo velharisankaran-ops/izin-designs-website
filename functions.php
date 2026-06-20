@@ -100,6 +100,25 @@ function izin_designs_ensure_bid_project_page() {
 }
 add_action('init', 'izin_designs_ensure_bid_project_page');
 
+function izin_designs_project_status_page_slug() {
+    return 'project-status';
+}
+
+function izin_designs_ensure_project_status_page() {
+    if (get_page_by_path(izin_designs_project_status_page_slug())) {
+        return;
+    }
+
+    wp_insert_post(array(
+        'post_title'   => 'Project Status',
+        'post_name'    => izin_designs_project_status_page_slug(),
+        'post_status'  => 'publish',
+        'post_type'    => 'page',
+        'post_content' => '',
+    ));
+}
+add_action('init', 'izin_designs_ensure_project_status_page');
+
 function izin_designs_package_page_slug() {
     return '3bhk-interior-package-kochi-aluva';
 }
@@ -142,6 +161,10 @@ add_filter('body_class', 'izin_designs_body_classes');
 
 function izin_designs_is_package_page() {
     return is_page(izin_designs_package_page_slug());
+}
+
+function izin_designs_is_project_status_page() {
+    return is_page(izin_designs_project_status_page_slug());
 }
 
 function izin_designs_package_seo_title() {
@@ -232,7 +255,7 @@ function izin_designs_package_head_meta() {
 add_action('wp_head', 'izin_designs_package_head_meta', 5);
 
 function izin_designs_thin_page_slugs() {
-    return array('draft-blog-page', 'elementor-page-580');
+    return array('draft-blog-page', 'elementor-page-580', izin_designs_project_status_page_slug());
 }
 
 function izin_designs_is_thin_index_page() {
@@ -246,7 +269,7 @@ function izin_designs_is_thin_index_page() {
 }
 
 function izin_designs_wp_robots($robots) {
-    if (izin_designs_is_thin_index_page()) {
+    if (izin_designs_is_thin_index_page() || izin_designs_is_project_status_page()) {
         $robots['index'] = false;
         $robots['follow'] = false;
         $robots['noimageindex'] = true;
@@ -259,7 +282,7 @@ function izin_designs_wp_robots($robots) {
 add_filter('wp_robots', 'izin_designs_wp_robots');
 
 function izin_designs_rank_math_robots($robots) {
-    if (izin_designs_is_thin_index_page()) {
+    if (izin_designs_is_thin_index_page() || izin_designs_is_project_status_page()) {
         return array('noindex', 'nofollow', 'noimageindex');
     }
 

@@ -9,6 +9,7 @@ if (!defined('ABSPATH')) {
 
 require_once get_template_directory() . '/includes/izin-leads.php';
 require_once get_template_directory() . '/includes/izin-careers.php';
+require_once get_template_directory() . '/includes/izin-video-section.php';
 
 function izin_designs_theme_setup() {
     add_theme_support('title-tag');
@@ -284,9 +285,91 @@ function izin_designs_filter_rank_math_schema($data, $jsonld) {
         }
     }
 
+    if (function_exists('izin_designs_homepage_videos')) {
+        foreach (izin_designs_homepage_videos() as $index => $video) {
+            $entry = array(
+                '@type'            => 'VideoObject',
+                '@id'              => home_url('/#' . $video['slug']),
+                'name'             => $video['title'],
+                'description'      => $video['description'],
+                'thumbnailUrl'     => array($video['thumbnail_url']),
+                'isFamilyFriendly' => true,
+                'publisher'        => array(
+                    '@type' => 'Organization',
+                    'name'  => 'IZIN Designs Interior Studio',
+                    'url'   => home_url('/'),
+                    'logo'  => array(
+                        '@type' => 'ImageObject',
+                        'url'   => 'https://izindesigns.com/wp-content/uploads/2026/05/cropped-Izin-Design-Interior-Studio-1-63x64.png',
+                    ),
+                ),
+            );
+
+            if (!empty($video['watch_url'])) {
+                $entry['url'] = $video['watch_url'];
+                $entry['mainEntityOfPage'] = $video['watch_url'];
+            } else {
+                $entry['url'] = home_url('/#' . $video['slug']);
+                $entry['mainEntityOfPage'] = home_url('/');
+            }
+
+            if (!empty($video['embed_url'])) {
+                $entry['embedUrl'] = $video['embed_url'];
+            }
+
+            if (!empty($video['content_url'])) {
+                $entry['contentUrl'] = $video['content_url'];
+            }
+
+            $data['izin_home_video_' . $index] = $entry;
+        }
+    }
+
     return $data;
 }
 add_filter('rank_math/json_ld', 'izin_designs_filter_rank_math_schema', 20, 2);
+
+function izin_designs_homepage_video_schema() {
+    if (!is_front_page() || !function_exists('izin_designs_homepage_videos')) {
+        return;
+    }
+
+    $graph = array();
+
+    foreach (izin_designs_homepage_videos() as $video) {
+        $entry = array(
+            '@type'        => 'VideoObject',
+            'name'         => $video['title'],
+            'description'  => $video['description'],
+            'thumbnailUrl' => array($video['thumbnail_url']),
+            'url'          => !empty($video['watch_url']) ? $video['watch_url'] : home_url('/#' . $video['slug']),
+        );
+
+        if (!empty($video['embed_url'])) {
+            $entry['embedUrl'] = $video['embed_url'];
+        }
+
+        if (!empty($video['content_url'])) {
+            $entry['contentUrl'] = $video['content_url'];
+        }
+
+        $graph[] = $entry;
+    }
+    ?>
+    <script type="application/ld+json">
+    <?php
+    echo wp_json_encode(
+        array(
+            '@context' => 'https://schema.org',
+            '@graph'   => $graph,
+        ),
+        JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES
+    );
+    ?>
+    </script>
+    <?php
+}
+add_action('wp_head', 'izin_designs_homepage_video_schema', 30);
 
 function izin_designs_get_primary_term_name($post_id = 0) {
     $post_id = $post_id ?: get_the_ID();

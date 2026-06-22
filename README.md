@@ -69,3 +69,76 @@ WordPress Admin > Izin Leads
 ```
 
 After saving, the visitor is redirected to WhatsApp with the enquiry details.
+
+## Deployment Workflow
+
+Use this repository as the only editing source for the live theme.
+
+Standard flow:
+
+```text
+Edit locally
+Preview locally
+git status
+git add ...
+git commit -m "..."
+git push origin main
+.\scripts\deploy-theme.ps1
+Verify live routes
+```
+
+Live theme target:
+
+```text
+/home/u658377134/domains/izindesigns.com/public_html/wp-content/themes/izin-designs-theme
+```
+
+### SSH Alias
+
+Install the local SSH alias once:
+
+```powershell
+.\scripts\install-ssh-alias.ps1
+```
+
+Then server login becomes:
+
+```powershell
+ssh izin-hostinger
+```
+
+### Deploy Script
+
+Default full theme deploy:
+
+```powershell
+.\scripts\deploy-theme.ps1
+```
+
+Dry run:
+
+```powershell
+.\scripts\deploy-theme.ps1 -DryRun
+```
+
+Deploy only specific files or folders:
+
+```powershell
+.\scripts\deploy-theme.ps1 -Path functions.php,includes,frontend
+```
+
+Deploy without cache purge:
+
+```powershell
+.\scripts\deploy-theme.ps1 -NoCachePurge
+```
+
+The script:
+
+```text
+- uploads only the theme allowlist
+- never touches plugins, uploads, or WordPress core
+- extracts into the live theme directory
+- purges LiteSpeed and WordPress cache by default
+- prints the main routes to verify after deploy
+```

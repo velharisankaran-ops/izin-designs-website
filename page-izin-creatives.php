@@ -25,6 +25,41 @@ get_header();
     </div>
   </section>
 
+  <section class="creatives-service-showcase" aria-labelledby="creatives-service-title">
+    <div class="creatives-service-showcase-head">
+      <span>Core Services</span>
+      <h2 id="creatives-service-title">Creative support built around your business</h2>
+    </div>
+    <div class="creatives-service-cards">
+      <article class="creatives-service-card">
+        <img src="<?php echo esc_url(get_template_directory_uri() . '/frontend/assets/creatives/graphic-design.jpg'); ?>" alt="Colour and brand design materials arranged on a creative workspace" width="1200" height="900" loading="eager" decoding="async">
+        <div class="creatives-service-card-copy">
+          <span>01</span>
+          <h3>Graphic Design</h3>
+          <p>Brand visuals, social media creatives, campaign artwork and communication materials designed as one consistent system.</p>
+        </div>
+      </article>
+
+      <article class="creatives-service-card">
+        <img src="<?php echo esc_url(get_template_directory_uri() . '/frontend/assets/creatives/digital-marketing.jpg'); ?>" alt="Digital campaign analytics displayed on a laptop" width="1200" height="900" loading="lazy" decoding="async">
+        <div class="creatives-service-card-copy">
+          <span>02</span>
+          <h3>Digital Marketing</h3>
+          <p>Content planning, profile management, campaign execution and reporting focused on visibility and qualified enquiries.</p>
+        </div>
+      </article>
+
+      <article class="creatives-service-card">
+        <img src="<?php echo esc_url(get_template_directory_uri() . '/frontend/assets/creatives/web-development.jpg'); ?>" alt="Website development workspace with code displayed on a laptop" width="1200" height="900" loading="lazy" decoding="async">
+        <div class="creatives-service-card-copy">
+          <span>03</span>
+          <h3>Web Development</h3>
+          <p>Responsive business websites and landing pages structured for clear service presentation, contact and conversion.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
   <nav class="creatives-mobile-index" aria-label="IZIN Creatives page sections">
     <a href="#creatives-about">About</a>
     <a href="#creatives-clients">Clients</a>

@@ -43,7 +43,7 @@ function izin_designs_theme_assets() {
         $styles_version
     );
 
-    if (is_page('izin-creatives')) {
+    if (is_page(array('izin-creatives', 'izin-hub'))) {
         wp_enqueue_style(
             'izin-creatives-fonts',
             'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap',
@@ -130,6 +130,21 @@ function izin_designs_ensure_creatives_page() {
     ));
 }
 add_action('init', 'izin_designs_ensure_creatives_page');
+
+function izin_designs_ensure_hub_page() {
+    if (get_page_by_path('izin-hub')) {
+        return;
+    }
+
+    wp_insert_post(array(
+        'post_title'   => 'IZIN Hub',
+        'post_name'    => 'izin-hub',
+        'post_status'  => 'publish',
+        'post_type'    => 'page',
+        'post_content' => '',
+    ));
+}
+add_action('init', 'izin_designs_ensure_hub_page');
 
 function izin_designs_free_consultation_page_slug() {
     return 'free-consultation';
@@ -229,6 +244,10 @@ function izin_designs_body_classes($classes) {
         $classes[] = 'izin-creatives-view';
     }
 
+    if (is_page('izin-hub')) {
+        $classes[] = 'izin-hub-view';
+    }
+
     if (is_single()) {
         $classes[] = 'izin-single-post';
     }
@@ -303,6 +322,11 @@ function izin_designs_package_meta_description() {
 }
 
 function izin_designs_document_title_parts($title_parts) {
+    if (is_page('izin-hub')) {
+        $title_parts['title'] = 'IZIN Hub | Interiors, Creatives & Global Ventures';
+        return $title_parts;
+    }
+
     if (izin_designs_is_free_consultation_page()) {
         $title_parts['title'] = 'Free Interior Consultation in Kochi | IZIN Designs Interior Studio';
         return $title_parts;
@@ -321,6 +345,10 @@ function izin_designs_rank_math_title($title) {
         return 'Interior Designers in Kochi | IZIN Designs Interior Studio';
     }
 
+    if (is_page('izin-hub')) {
+        return 'IZIN Hub | Interiors, Creatives & Global Ventures';
+    }
+
     if (izin_designs_is_free_consultation_page()) {
         return 'Free Interior Consultation in Kochi | IZIN Designs Interior Studio';
     }
@@ -336,6 +364,10 @@ add_filter('rank_math/frontend/title', 'izin_designs_rank_math_title');
 function izin_designs_rank_math_description($description) {
     if (is_front_page()) {
         return 'Custom home and commercial interior design in Kochi and Aluva, Kerala. Modular kitchens, bespoke furniture, turnkey execution and consultation.';
+    }
+
+    if (is_page('izin-hub')) {
+        return 'Explore IZIN Interiors, IZIN Creatives and the group ventures from one central IZIN hub.';
     }
 
     if (izin_designs_is_free_consultation_page()) {

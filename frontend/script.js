@@ -279,13 +279,6 @@ document.addEventListener("DOMContentLoaded", function () {
   var creativesMobileQuery = window.matchMedia("(max-width: 820px)");
 
   function syncCreativesMobileSections(event) {
-    if (!event.matches) {
-      creativesMobileSections.forEach(function (section) {
-        section.open = true;
-      });
-      return;
-    }
-
     creativesMobileSections.forEach(function (section) {
       section.open = false;
     });
@@ -303,7 +296,7 @@ document.addEventListener("DOMContentLoaded", function () {
       link.addEventListener("click", function () {
         var target = document.querySelector(link.getAttribute("href"));
         var accordion = target ? target.querySelector("[data-mobile-collapsible]") : null;
-        if (accordion && creativesMobileQuery.matches) {
+        if (accordion) {
           accordion.open = true;
         }
       });

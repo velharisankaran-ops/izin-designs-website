@@ -14,49 +14,47 @@ get_header();
   <section class="creatives-hero">
     <div class="creatives-hero-copy">
       <h1 class="creatives-hero-title">
-        <span class="creatives-hero-title-kicker">Izin Creative</span>
         <span class="creatives-hero-title-main">Signature Services</span>
       </h1>
-      <p class="creatives-hero-services">
-        <span>Graphic Design</span>
-        <span>Digital Marketing</span>
-        <span>Web Development</span>
-      </p>
+      <p class="creatives-hero-services">Creative support built around your business</p>
     </div>
   </section>
 
   <section class="creatives-service-showcase" aria-labelledby="creatives-service-title">
-    <div class="creatives-service-showcase-head">
-      <span>Core Services</span>
-      <h2 id="creatives-service-title">Creative support built around your business</h2>
-    </div>
+    <h2 class="sr-only" id="creatives-service-title">Core creative services</h2>
     <div class="creatives-service-cards">
-      <article class="creatives-service-card">
-        <img src="<?php echo esc_url(get_template_directory_uri() . '/frontend/assets/creatives/graphic-design.jpg'); ?>" alt="Colour and brand design materials arranged on a creative workspace" width="1200" height="900" loading="eager" decoding="async">
-        <div class="creatives-service-card-copy">
-          <span>01</span>
-          <h3>Graphic Design</h3>
-          <p>Brand visuals, social media creatives, campaign artwork and communication materials designed as one consistent system.</p>
-        </div>
-      </article>
+      <?php
+      $creative_services = array(
+          array(
+              'title' => 'Graphic Design',
+              'summary' => 'Brand visuals and communication systems.',
+              'image' => 'graphic-design.jpg',
+              'alt' => 'Colour and brand design materials arranged on a creative workspace',
+          ),
+          array(
+              'title' => 'Digital Marketing',
+              'summary' => 'Content, campaigns and lead growth.',
+              'image' => 'digital-marketing.jpg',
+              'alt' => 'Digital campaign analytics displayed on a laptop',
+          ),
+          array(
+              'title' => 'Web Development',
+              'summary' => 'Responsive websites and landing pages.',
+              'image' => 'web-development.jpg',
+              'alt' => 'Website development workspace with code displayed on a laptop',
+          ),
+      );
 
-      <article class="creatives-service-card">
-        <img src="<?php echo esc_url(get_template_directory_uri() . '/frontend/assets/creatives/digital-marketing.jpg'); ?>" alt="Digital campaign analytics displayed on a laptop" width="1200" height="900" loading="lazy" decoding="async">
-        <div class="creatives-service-card-copy">
-          <span>02</span>
-          <h3>Digital Marketing</h3>
-          <p>Content planning, profile management, campaign execution and reporting focused on visibility and qualified enquiries.</p>
-        </div>
-      </article>
-
-      <article class="creatives-service-card">
-        <img src="<?php echo esc_url(get_template_directory_uri() . '/frontend/assets/creatives/web-development.jpg'); ?>" alt="Website development workspace with code displayed on a laptop" width="1200" height="900" loading="lazy" decoding="async">
-        <div class="creatives-service-card-copy">
-          <span>03</span>
-          <h3>Web Development</h3>
-          <p>Responsive business websites and landing pages structured for clear service presentation, contact and conversion.</p>
-        </div>
-      </article>
+      foreach ($creative_services as $index => $service) :
+      ?>
+        <article class="creatives-service-card">
+          <img src="<?php echo esc_url(get_template_directory_uri() . '/frontend/assets/creatives/' . $service['image']); ?>" alt="<?php echo esc_attr($service['alt']); ?>" width="1200" height="900" loading="<?php echo $index === 0 ? 'eager' : 'lazy'; ?>" decoding="async">
+          <div class="creatives-service-card-copy">
+            <h3><?php echo esc_html($service['title']); ?></h3>
+            <p><?php echo esc_html($service['summary']); ?></p>
+          </div>
+        </article>
+      <?php endforeach; ?>
     </div>
   </section>
 
@@ -69,7 +67,7 @@ get_header();
   </nav>
 
   <section class="creatives-section creatives-collapsible" id="creatives-about">
-    <details class="creatives-mobile-accordion" open data-mobile-collapsible>
+    <details class="creatives-mobile-accordion" data-mobile-collapsible>
       <summary class="creatives-mobile-summary">About IZIN Creatives</summary>
       <div class="creatives-mobile-panel">
         <div class="creatives-section-head">
@@ -88,7 +86,7 @@ get_header();
   </section>
 
   <section class="creatives-section creatives-collapsible" id="creatives-clients">
-    <details class="creatives-mobile-accordion" open data-mobile-collapsible>
+    <details class="creatives-mobile-accordion" data-mobile-collapsible>
       <summary class="creatives-mobile-summary">Client Groups</summary>
       <div class="creatives-mobile-panel">
         <div class="creatives-section-head">
@@ -109,7 +107,7 @@ get_header();
   </section>
 
   <section class="creatives-section creatives-collapsible" id="creatives-process">
-    <details class="creatives-mobile-accordion" open data-mobile-collapsible>
+    <details class="creatives-mobile-accordion" data-mobile-collapsible>
       <summary class="creatives-mobile-summary">Service Process</summary>
       <div class="creatives-mobile-panel">
         <div class="creatives-section-head">
@@ -202,7 +200,7 @@ get_header();
     );
 
     ?>
-    <details class="creatives-mobile-accordion creatives-mobile-accordion-rates" open data-mobile-collapsible>
+    <details class="creatives-mobile-accordion creatives-mobile-accordion-rates" data-mobile-collapsible>
       <summary class="creatives-mobile-summary">Rate Card</summary>
       <div class="creatives-mobile-panel">
         <div class="creatives-section-head">
@@ -241,29 +239,18 @@ get_header();
   </section>
 
   <section class="creatives-section" id="creatives-form">
-    <div class="creatives-section-head">
-      <span>Project Enquiry</span>
-      <h2>Tell us what you need</h2>
-      <p>Share the requirement first. Your contact details come next.</p>
+    <div class="creatives-enquiry-title">
+      <strong>PROJECT ENQUIRY:</strong>
+      <span>Tell us what you need</span>
     </div>
 
     <div class="creatives-process-rail" aria-label="Service process">
-      <article class="creatives-process-step">
-        <strong>01</strong>
-        <span>Requirement Shared</span>
-      </article>
-      <article class="creatives-process-step">
-        <strong>02</strong>
-        <span>Team Review</span>
-      </article>
-      <article class="creatives-process-step">
-        <strong>03</strong>
-        <span>Scope & Quote</span>
-      </article>
-      <article class="creatives-process-step">
-        <strong>04</strong>
-        <span>Start Execution</span>
-      </article>
+      <?php foreach (array('Requirement Shared', 'Team Review', 'Scope & Quote', 'Start') as $index => $label) : ?>
+        <article class="creatives-process-step">
+          <strong><?php echo esc_html(str_pad((string) ($index + 1), 2, '0', STR_PAD_LEFT)); ?></strong>
+          <span><?php echo esc_html($label); ?></span>
+        </article>
+      <?php endforeach; ?>
     </div>
 
     <form class="career-form-card creatives-form-card" data-izin-creatives-form>
@@ -393,6 +380,13 @@ get_header();
     </form>
   </section>
 </main>
+
+<nav class="creatives-bottom-nav" aria-label="Mobile navigation">
+  <a href="<?php echo esc_url(home_url('/')); ?>"><span class="material-symbols-outlined" aria-hidden="true">home</span><small>Home</small></a>
+  <a href="#creatives-service-title"><span class="material-symbols-outlined" aria-hidden="true">grid_view</span><small>Services</small></a>
+  <a href="#creatives-form"><span class="material-symbols-outlined" aria-hidden="true">chat_bubble</span><small>Enquire</small></a>
+  <a href="tel:+918714738111"><span class="material-symbols-outlined" aria-hidden="true">call</span><small>Contact</small></a>
+</nav>
 
 <?php get_template_part('template-parts/site-footer'); ?>
 

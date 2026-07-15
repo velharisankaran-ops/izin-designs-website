@@ -43,6 +43,22 @@ function izin_designs_theme_assets() {
         $styles_version
     );
 
+    if (is_page('izin-creatives')) {
+        wp_enqueue_style(
+            'izin-creatives-fonts',
+            'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap',
+            array(),
+            null
+        );
+
+        wp_enqueue_style(
+            'izin-material-symbols',
+            'https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,300,0,0',
+            array(),
+            null
+        );
+    }
+
     wp_enqueue_script(
         'izin-designs-frontend',
         get_template_directory_uri() . '/frontend/script.js',
@@ -209,6 +225,10 @@ function izin_designs_ensure_package_page() {
 add_action('init', 'izin_designs_ensure_package_page');
 
 function izin_designs_body_classes($classes) {
+    if (is_page('izin-creatives')) {
+        $classes[] = 'izin-creatives-view';
+    }
+
     if (is_single()) {
         $classes[] = 'izin-single-post';
     }

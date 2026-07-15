@@ -10,6 +10,7 @@ if (!defined('ABSPATH')) {
 require_once get_template_directory() . '/includes/izin-leads.php';
 require_once get_template_directory() . '/includes/izin-careers.php';
 require_once get_template_directory() . '/includes/izin-projects.php';
+require_once get_template_directory() . '/includes/izin-creatives.php';
 require_once get_template_directory() . '/includes/izin-video-section.php';
 
 function izin_designs_theme_setup() {
@@ -64,8 +65,26 @@ function izin_designs_theme_activate() {
     if (function_exists('izin_projects_install')) {
         izin_projects_install();
     }
+
+    if (function_exists('izin_creatives_install')) {
+        izin_creatives_install();
+    }
 }
 add_action('after_switch_theme', 'izin_designs_theme_activate');
+
+function izin_designs_maybe_install_creatives() {
+    if (!function_exists('izin_creatives_install')) {
+        return;
+    }
+
+    if (get_option('izin_creatives_schema_version') === '2') {
+        return;
+    }
+
+    izin_creatives_install();
+    update_option('izin_creatives_schema_version', '2');
+}
+add_action('init', 'izin_designs_maybe_install_creatives', 5);
 
 function izin_designs_ensure_career_page() {
     if (get_page_by_path('career')) {
@@ -81,8 +100,59 @@ function izin_designs_ensure_career_page() {
 }
 add_action('init', 'izin_designs_ensure_career_page');
 
+function izin_designs_ensure_creatives_page() {
+    if (get_page_by_path('izin-creatives')) {
+        return;
+    }
+
+    wp_insert_post(array(
+        'post_title'   => 'IZIN Creatives',
+        'post_name'    => 'izin-creatives',
+        'post_status'  => 'publish',
+        'post_type'    => 'page',
+        'post_content' => '',
+    ));
+}
+add_action('init', 'izin_designs_ensure_creatives_page');
+
+function izin_designs_free_consultation_page_slug() {
+    return 'free-consultation';
+}
+
+function izin_designs_ensure_free_consultation_page() {
+    if (get_page_by_path(izin_designs_free_consultation_page_slug())) {
+        return;
+    }
+
+    wp_insert_post(array(
+        'post_title'   => 'Free Consultation',
+        'post_name'    => izin_designs_free_consultation_page_slug(),
+        'post_status'  => 'publish',
+        'post_type'    => 'page',
+        'post_content' => '',
+    ));
+}
+add_action('init', 'izin_designs_ensure_free_consultation_page');
+
 function izin_designs_bid_project_page_slug() {
     return 'bid-project';
+}
+
+function izin_designs_location_menu_items() {
+    return array(
+        'Kochi',
+        'Aluva',
+        'Edappally',
+        'Kakkanad',
+        'Thrippunithura',
+        'Angamaly',
+        'Ernakulam',
+        'Thrissur',
+    );
+}
+
+function izin_designs_is_location_page() {
+    return false;
 }
 
 function izin_designs_ensure_bid_project_page() {
@@ -167,6 +237,43 @@ function izin_designs_is_project_status_page() {
     return is_page(izin_designs_project_status_page_slug());
 }
 
+function izin_designs_is_free_consultation_page() {
+    return is_page(izin_designs_free_consultation_page_slug());
+}
+
+function izin_designs_section_url($section) {
+    $homepage_sections = array(
+        'home',
+        'services',
+        'gallery',
+        'bespoke',
+        'contact',
+        'consultation',
+    );
+
+    if (!in_array($section, $homepage_sections, true)) {
+        return esc_url(home_url('/'));
+    }
+
+    if ('consultation' === $section && !is_front_page() && !izin_designs_is_free_consultation_page()) {
+        return esc_url(home_url('/' . izin_designs_free_consultation_page_slug() . '/'));
+    }
+
+    if (izin_designs_is_free_consultation_page()) {
+        if ('consultation' === $section) {
+            return '#free-consultation-form';
+        }
+
+        return esc_url(home_url('/')) . '#' . $section;
+    }
+
+    if (is_front_page()) {
+        return '#' . $section;
+    }
+
+    return esc_url(home_url('/')) . '#' . $section;
+}
+
 function izin_designs_package_seo_title() {
     return '3BHK Interior Package in Kochi & Aluva | ₹4,99,999 | Izin Designs';
 }
@@ -176,6 +283,11 @@ function izin_designs_package_meta_description() {
 }
 
 function izin_designs_document_title_parts($title_parts) {
+    if (izin_designs_is_free_consultation_page()) {
+        $title_parts['title'] = 'Free Interior Consultation in Kochi | IZIN Designs Interior Studio';
+        return $title_parts;
+    }
+
     if (izin_designs_is_package_page()) {
         $title_parts['title'] = izin_designs_package_seo_title();
     }
@@ -189,6 +301,10 @@ function izin_designs_rank_math_title($title) {
         return 'Interior Designers in Kochi | IZIN Designs Interior Studio';
     }
 
+    if (izin_designs_is_free_consultation_page()) {
+        return 'Free Interior Consultation in Kochi | IZIN Designs Interior Studio';
+    }
+
     if (izin_designs_is_package_page()) {
         return izin_designs_package_seo_title();
     }
@@ -200,6 +316,10 @@ add_filter('rank_math/frontend/title', 'izin_designs_rank_math_title');
 function izin_designs_rank_math_description($description) {
     if (is_front_page()) {
         return 'Custom home and commercial interior design in Kochi and Aluva, Kerala. Modular kitchens, bespoke furniture, turnkey execution and consultation.';
+    }
+
+    if (izin_designs_is_free_consultation_page()) {
+        return 'Book a free consultation with IZIN Designs Interior Studio for residential interiors, commercial interiors, modular kitchens and turnkey execution in Kochi, Aluva and Ernakulam.';
     }
 
     if (izin_designs_is_package_page()) {
@@ -254,8 +374,34 @@ function izin_designs_package_head_meta() {
 }
 add_action('wp_head', 'izin_designs_package_head_meta', 5);
 
+function izin_designs_free_consultation_head_meta() {
+    if (!izin_designs_is_free_consultation_page()) {
+        return;
+    }
+
+    $title = 'Free Interior Consultation in Kochi | IZIN Designs Interior Studio';
+    $description = 'Book a free consultation with IZIN Designs Interior Studio for residential interiors, commercial interiors, modular kitchens and turnkey execution in Kochi, Aluva and Ernakulam.';
+    $url = get_permalink();
+    ?>
+    <?php if (!defined('RANK_MATH_VERSION')) : ?>
+    <meta name="description" content="<?php echo esc_attr($description); ?>">
+    <link rel="canonical" href="<?php echo esc_url($url); ?>">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="<?php echo esc_attr($title); ?>">
+    <meta property="og:description" content="<?php echo esc_attr($description); ?>">
+    <meta property="og:url" content="<?php echo esc_url($url); ?>">
+    <meta property="og:image" content="https://izindesigns.com/wp-content/uploads/2026/06/izin-designs-interior-studio.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="<?php echo esc_attr($title); ?>">
+    <meta name="twitter:description" content="<?php echo esc_attr($description); ?>">
+    <meta name="twitter:image" content="https://izindesigns.com/wp-content/uploads/2026/06/izin-designs-interior-studio.png">
+    <?php endif; ?>
+    <?php
+}
+add_action('wp_head', 'izin_designs_free_consultation_head_meta', 5);
+
 function izin_designs_thin_page_slugs() {
-    return array('draft-blog-page', 'elementor-page-580', izin_designs_project_status_page_slug());
+    return array('draft-blog-page', 'elementor-page-580', izin_designs_project_status_page_slug(), izin_designs_bid_project_page_slug());
 }
 
 function izin_designs_is_thin_index_page() {

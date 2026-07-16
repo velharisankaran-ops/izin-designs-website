@@ -344,12 +344,6 @@ get_header();
   <?php endif; ?>
 
   <section class="creatives-section creatives-enquiry" id="creatives-form" data-creatives-enquiry>
-    <button class="creatives-enquiry-open" type="button" data-creatives-form-open aria-expanded="false" aria-controls="creatives-form-panel">
-      <span>Start Project Enquiry</span>
-      <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
-    </button>
-
-    <div class="creatives-enquiry-panel" id="creatives-form-panel" data-creatives-form-panel hidden>
     <div class="creatives-enquiry-title">
       <strong>PROJECT ENQUIRY:</strong>
       <span>Tell us what you need</span>
@@ -364,6 +358,12 @@ get_header();
       <?php endforeach; ?>
     </div>
 
+    <button class="creatives-enquiry-open" type="button" data-creatives-form-open aria-expanded="false" aria-controls="creatives-form-panel">
+      <span>Start Project Enquiry</span>
+      <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
+    </button>
+
+    <div class="creatives-enquiry-panel" id="creatives-form-panel" data-creatives-form-panel hidden>
     <form class="career-form-card creatives-form-card" data-izin-creatives-form>
       <input class="izin-honeypot" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
       <div class="creatives-form-progress" aria-label="Form steps">

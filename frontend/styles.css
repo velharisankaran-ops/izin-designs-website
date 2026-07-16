@@ -7123,6 +7123,11 @@ body.creatives-rate-dialog-open {
 }
 
 /* IZIN Creatives interaction refinement */
+.izin-creatives-view .creatives-hero {
+  min-height: 260px;
+  padding: 92px 24px 0;
+}
+
 .izin-creatives-view .creatives-service-showcase {
   margin-top: 28px;
 }
@@ -7253,6 +7258,11 @@ body.creatives-rate-dialog-open {
 }
 
 @media (max-width: 760px) {
+  .izin-creatives-view .creatives-hero {
+    min-height: 180px;
+    padding: 78px 20px 0;
+  }
+
   .izin-creatives-view .creatives-service-showcase {
     margin-top: 18px;
   }

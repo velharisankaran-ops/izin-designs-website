@@ -30,21 +30,24 @@ get_header();
           array(
               'key' => 'graphic-design',
               'title' => 'Graphic Design',
-              'summary' => 'Brand visuals and communication systems.',
+              'summary' => 'Brand identity, social creatives, print and event design.',
+              'starting_price' => 'Services from Rs. 400',
               'image' => 'graphic-design.jpg',
               'alt' => 'Colour and brand design materials arranged on a creative workspace',
           ),
           array(
               'key' => 'digital-marketing',
               'title' => 'Digital Marketing',
-              'summary' => 'Content, campaigns and lead growth.',
+              'summary' => 'SEO, paid advertising and social growth campaigns.',
+              'starting_price' => 'Services from Rs. 8,500',
               'image' => 'digital-marketing.jpg',
               'alt' => 'Digital campaign analytics displayed on a laptop',
           ),
           array(
               'key' => 'web-development',
               'title' => 'Web Development',
-              'summary' => 'Responsive websites and landing pages.',
+              'summary' => 'Landing pages, CMS websites and custom applications.',
+              'starting_price' => 'Services from Rs. 12,000',
               'image' => 'web-development.jpg',
               'alt' => 'Website development workspace with code displayed on a laptop',
           ),
@@ -57,7 +60,8 @@ get_header();
           <div class="creatives-service-card-copy">
             <h3><?php echo esc_html($service['title']); ?></h3>
             <p><?php echo esc_html($service['summary']); ?></p>
-            <span>View services &amp; rates</span>
+            <span class="creatives-service-price"><?php echo esc_html($service['starting_price']); ?></span>
+            <span class="creatives-service-link">View Services &amp; Rates</span>
           </div>
         </button>
       <?php endforeach; ?>

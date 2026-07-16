@@ -6609,7 +6609,17 @@ a.izin-hub-division:focus-visible {
 
 .izin-creatives-view .creatives-service-card-copy > span {
   display: block;
-  margin-top: 8px;
+}
+
+.izin-creatives-view .creatives-service-price {
+  margin-top: 9px;
+  color: #44564f;
+  font-size: 10px;
+  font-weight: 500;
+}
+
+.izin-creatives-view .creatives-service-link {
+  margin-top: 4px;
   color: #176b56;
   font-size: 10px;
   font-weight: 600;
@@ -6783,9 +6793,56 @@ body.creatives-rate-dialog-open {
 }
 
 @media (max-width: 760px) {
-  .izin-creatives-view .creatives-service-card-copy > span {
-    margin-top: 5px;
-    font-size: 8px;
+  .izin-creatives-view .creatives-service-cards {
+    grid-template-columns: 1fr;
+    gap: 9px;
+  }
+
+  .izin-creatives-view .creatives-service-card {
+    min-height: 104px;
+    display: grid;
+    grid-template-columns: 104px minmax(0, 1fr);
+  }
+
+  .izin-creatives-view .creatives-service-card img {
+    width: 104px;
+    height: 100%;
+    min-height: 104px;
+    aspect-ratio: auto;
+    object-fit: cover;
+  }
+
+  .izin-creatives-view .creatives-service-card-copy {
+    min-height: 104px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10px 12px;
+  }
+
+  .izin-creatives-view .creatives-service-card-copy h3 {
+    margin-bottom: 4px;
+    font-size: 15px;
+    line-height: 1.16;
+  }
+
+  .izin-creatives-view .creatives-service-card-copy p {
+    display: -webkit-box;
+    font-size: 10.5px;
+    line-height: 1.35;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+
+  .izin-creatives-view .creatives-service-price {
+    margin-top: 6px;
+    font-size: 9px;
+    line-height: 1.25;
+  }
+
+  .izin-creatives-view .creatives-service-link {
+    margin-top: 3px;
+    font-size: 9px;
     line-height: 1.25;
   }
 

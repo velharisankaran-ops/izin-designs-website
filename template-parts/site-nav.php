@@ -5,14 +5,18 @@ $is_creatives_page = function_exists('is_page') && is_page('izin-creatives');
 if ($is_creatives_page) {
   $consultation_cta_url = '#creatives-form';
 }
+
+$brand_url = $is_creatives_page
+  ? 'https://hub.izindesigns.com/'
+  : (function_exists('izin_designs_section_url') ? izin_designs_section_url('home') : esc_url(home_url('/')) . '#home');
 ?>
 
 <header class="site-header" data-site-header>
-  <a class="brand" href="<?php echo function_exists('izin_designs_section_url') ? esc_url(izin_designs_section_url('home')) : esc_url(home_url('/')) . '#home'; ?>" aria-label="<?php esc_attr_e('Izin Designs Interior Studio', 'izin-designs-theme'); ?>">
-    <img src="https://izindesigns.com/wp-content/uploads/2026/05/cropped-Izin-Design-Interior-Studio-1-63x64.png" alt="<?php esc_attr_e('Izin Designs Interior Studio', 'izin-designs-theme'); ?>">
+  <a class="brand" href="<?php echo esc_url($brand_url); ?>" aria-label="<?php echo esc_attr($is_creatives_page ? 'Izin Group' : 'Izin Designs Interior Studio'); ?>">
+    <img src="https://izindesigns.com/wp-content/uploads/2026/05/cropped-Izin-Design-Interior-Studio-1-63x64.png" alt="<?php echo esc_attr($is_creatives_page ? 'Izin Group' : 'Izin Designs Interior Studio'); ?>">
     <span>
-      <strong><?php echo esc_html($is_creatives_page ? 'izin' : 'Izin Designs'); ?></strong>
-      <small><?php echo esc_html($is_creatives_page ? 'CREATIVES' : 'Interior Studio'); ?></small>
+      <strong><?php echo esc_html($is_creatives_page ? 'Izin' : 'Izin Designs'); ?></strong>
+      <small><?php echo esc_html($is_creatives_page ? 'Group' : 'Interior Studio'); ?></small>
     </span>
   </a>
 

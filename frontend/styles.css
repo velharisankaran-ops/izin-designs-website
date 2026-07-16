@@ -3288,14 +3288,7 @@ img {
   }
 
   .izin-hero {
-    width: 100%;
-    margin: 0;
-    height: calc(100svh - 68px);
-    min-height: calc(100svh - 68px);
-    max-height: calc(100svh - 68px);
-    border-radius: 0;
-    box-shadow: none;
-    background: url("https://izindesigns.com/wp-content/uploads/2026/06/izin-designs-hero-image-mobile.png") center center / cover no-repeat;
+    display: none;
   }
 
   .izin-intro-inner {

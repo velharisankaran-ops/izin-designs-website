@@ -28,29 +28,7 @@ $brand_url = $is_creatives_page
   </button>
 
   <nav class="nav" id="primary-nav" data-primary-nav>
-    <?php if ($is_creatives_page) : ?>
     <a href="https://hub.izindesigns.com/"><?php esc_html_e('Izin Group', 'izin-designs-theme'); ?></a>
     <a class="nav-cta" href="<?php echo esc_url($consultation_cta_url); ?>"><?php esc_html_e('Free Consultation', 'izin-designs-theme'); ?></a>
-    <?php else : ?>
-    <a href="https://hub.izindesigns.com/"><?php esc_html_e('Hub', 'izin-designs-theme'); ?></a>
-    <a href="<?php echo function_exists('izin_designs_section_url') ? esc_url(izin_designs_section_url('home')) : esc_url(home_url('/')) . '#home'; ?>"><?php esc_html_e('Home', 'izin-designs-theme'); ?></a>
-    <a href="<?php echo function_exists('izin_designs_section_url') ? esc_url(izin_designs_section_url('services')) : esc_url(home_url('/')) . '#services'; ?>"><?php esc_html_e('Services', 'izin-designs-theme'); ?></a>
-    <a href="<?php echo function_exists('izin_designs_section_url') ? esc_url(izin_designs_section_url('gallery')) : esc_url(home_url('/')) . '#gallery'; ?>"><?php esc_html_e('Gallery', 'izin-designs-theme'); ?></a>
-    <div class="nav-dropdown" data-nav-dropdown>
-      <button class="nav-dropdown-toggle" type="button" aria-expanded="false" data-nav-dropdown-toggle>
-        <?php esc_html_e('Location', 'izin-designs-theme'); ?>
-      </button>
-      <div class="nav-dropdown-menu" data-nav-dropdown-menu>
-        <?php foreach (izin_designs_location_menu_items() as $location) : ?>
-          <span><?php echo esc_html($location); ?></span>
-        <?php endforeach; ?>
-      </div>
-    </div>
-    <a href="<?php echo function_exists('izin_designs_section_url') ? esc_url(izin_designs_section_url('bespoke')) : esc_url(home_url('/')) . '#bespoke'; ?>"><?php esc_html_e('Bespoke', 'izin-designs-theme'); ?></a>
-    <a href="<?php echo esc_url(home_url('/izin-creatives/')); ?>"><?php esc_html_e('Creatives', 'izin-designs-theme'); ?></a>
-    <a href="<?php echo function_exists('izin_designs_section_url') ? esc_url(izin_designs_section_url('contact')) : esc_url(home_url('/')) . '#contact'; ?>"><?php esc_html_e('Contact', 'izin-designs-theme'); ?></a>
-    <a href="<?php echo esc_url(home_url('/career/')); ?>"><?php esc_html_e('Career', 'izin-designs-theme'); ?></a>
-    <a class="nav-cta" href="<?php echo esc_url($consultation_cta_url); ?>"><?php esc_html_e('Free Consultation', 'izin-designs-theme'); ?></a>
-    <?php endif; ?>
   </nav>
 </header>

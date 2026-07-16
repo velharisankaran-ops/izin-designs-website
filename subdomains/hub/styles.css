@@ -87,11 +87,7 @@ select {
 }
 
 .hub-hero {
-  display: grid;
-  grid-template-columns: minmax(360px, 440px) 220px;
-  align-items: start;
-  justify-content: space-between;
-  gap: 48px;
+  width: min(100%, 440px);
   margin-bottom: 42px;
 }
 
@@ -229,11 +225,11 @@ select {
 .manager-profile-desktop {
   width: 220px;
   display: block;
+  margin-top: 28px;
   padding: 0;
   border: 0;
   border-radius: 0;
   background: transparent;
-  justify-self: end;
 }
 
 .manager-profile-desktop img {
@@ -497,9 +493,6 @@ button.division-card:focus-visible {
   }
 
   .hub-hero {
-    grid-template-columns: 1fr;
-    align-items: start;
-    gap: 0;
     margin-bottom: 24px;
   }
 

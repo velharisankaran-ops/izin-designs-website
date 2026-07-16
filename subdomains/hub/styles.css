@@ -89,10 +89,47 @@ select {
 .hub-hero {
   display: grid;
   grid-template-columns: minmax(0, 720px) 220px;
-  align-items: end;
+  align-items: start;
   justify-content: space-between;
   gap: 48px;
   margin-bottom: 42px;
+}
+
+.hub-hero-copy {
+  position: relative;
+  min-height: 400px;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  padding: 28px;
+  border-radius: 8px;
+  background: var(--emerald);
+}
+
+.hub-hero-image,
+.hub-hero-overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.hub-hero-image {
+  object-fit: cover;
+  object-position: center 34%;
+}
+
+.hub-hero-overlay {
+  background: linear-gradient(to top, rgba(0, 38, 27, 0.98) 0%, rgba(0, 38, 27, 0.62) 45%, rgba(0, 38, 27, 0.08) 100%);
+}
+
+.hub-hero-content {
+  position: relative;
+  z-index: 1;
+}
+
+.hub-hero-content .eyebrow {
+  color: var(--mint);
 }
 
 .eyebrow {
@@ -115,7 +152,8 @@ select {
 }
 
 .hub-hero h1 {
-  font-size: clamp(44px, 6vw, 72px);
+  color: #ffffff;
+  font-size: clamp(42px, 4.5vw, 54px);
   line-height: 1.02;
 }
 
@@ -124,12 +162,12 @@ select {
   white-space: nowrap;
 }
 
-.hub-hero-copy > p:last-child {
-  max-width: 600px;
-  margin: 14px 0 0;
-  color: var(--muted);
-  font-size: 16px;
-  line-height: 1.65;
+.hub-hero-content > p:last-child {
+  max-width: 420px;
+  margin: 12px 0 0;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 14px;
+  line-height: 1.55;
 }
 
 .manager-profile {
@@ -461,16 +499,21 @@ button.division-card:focus-visible {
     margin-bottom: 24px;
   }
 
+  .hub-hero-copy {
+    min-height: 400px;
+    padding: 22px;
+  }
+
   .hub-hero h1 {
     font-size: clamp(28px, 9vw, 39px);
     line-height: 1.03;
   }
 
-  .hub-hero-copy > p:last-child {
-    max-width: 330px;
-    margin-top: 8px;
+  .hub-hero-content > p:last-child {
+    max-width: 280px;
+    margin-top: 10px;
     font-size: 12px;
-    line-height: 1.48;
+    line-height: 1.5;
   }
 
   .manager-profile-desktop {

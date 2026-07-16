@@ -1,6 +1,10 @@
 <?php
 $consultation_cta_url = function_exists('izin_designs_section_url') ? izin_designs_section_url('consultation') : esc_url(home_url('/')) . '#consultation';
 $is_creatives_page = function_exists('is_page') && is_page('izin-creatives');
+
+if ($is_creatives_page) {
+  $consultation_cta_url = '#creatives-form';
+}
 ?>
 
 <header class="site-header" data-site-header>
@@ -20,6 +24,10 @@ $is_creatives_page = function_exists('is_page') && is_page('izin-creatives');
   </button>
 
   <nav class="nav" id="primary-nav" data-primary-nav>
+    <?php if ($is_creatives_page) : ?>
+    <a href="https://hub.izindesigns.com/"><?php esc_html_e('Izin Group', 'izin-designs-theme'); ?></a>
+    <a class="nav-cta" href="<?php echo esc_url($consultation_cta_url); ?>"><?php esc_html_e('Free Consultation', 'izin-designs-theme'); ?></a>
+    <?php else : ?>
     <a href="https://hub.izindesigns.com/"><?php esc_html_e('Hub', 'izin-designs-theme'); ?></a>
     <a href="<?php echo function_exists('izin_designs_section_url') ? esc_url(izin_designs_section_url('home')) : esc_url(home_url('/')) . '#home'; ?>"><?php esc_html_e('Home', 'izin-designs-theme'); ?></a>
     <a href="<?php echo function_exists('izin_designs_section_url') ? esc_url(izin_designs_section_url('services')) : esc_url(home_url('/')) . '#services'; ?>"><?php esc_html_e('Services', 'izin-designs-theme'); ?></a>
@@ -39,5 +47,6 @@ $is_creatives_page = function_exists('is_page') && is_page('izin-creatives');
     <a href="<?php echo function_exists('izin_designs_section_url') ? esc_url(izin_designs_section_url('contact')) : esc_url(home_url('/')) . '#contact'; ?>"><?php esc_html_e('Contact', 'izin-designs-theme'); ?></a>
     <a href="<?php echo esc_url(home_url('/career/')); ?>"><?php esc_html_e('Career', 'izin-designs-theme'); ?></a>
     <a class="nav-cta" href="<?php echo esc_url($consultation_cta_url); ?>"><?php esc_html_e('Free Consultation', 'izin-designs-theme'); ?></a>
+    <?php endif; ?>
   </nav>
 </header>

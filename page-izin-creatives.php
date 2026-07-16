@@ -16,7 +16,7 @@ get_header();
   <section class="creatives-hero">
     <div class="creatives-hero-copy">
       <h1 class="creatives-hero-title">
-        <span class="creatives-hero-title-main">Signature Services</span>
+        <span class="creatives-hero-title-main">Izin Creatives</span>
       </h1>
       <p class="creatives-hero-services">Creative support built around your business</p>
     </div>

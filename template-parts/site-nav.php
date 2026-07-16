@@ -20,6 +20,7 @@ $is_creatives_page = function_exists('is_page') && is_page('izin-creatives');
   </button>
 
   <nav class="nav" id="primary-nav" data-primary-nav>
+    <a href="https://hub.izindesigns.com/"><?php esc_html_e('Hub', 'izin-designs-theme'); ?></a>
     <a href="<?php echo function_exists('izin_designs_section_url') ? esc_url(izin_designs_section_url('home')) : esc_url(home_url('/')) . '#home'; ?>"><?php esc_html_e('Home', 'izin-designs-theme'); ?></a>
     <a href="<?php echo function_exists('izin_designs_section_url') ? esc_url(izin_designs_section_url('services')) : esc_url(home_url('/')) . '#services'; ?>"><?php esc_html_e('Services', 'izin-designs-theme'); ?></a>
     <a href="<?php echo function_exists('izin_designs_section_url') ? esc_url(izin_designs_section_url('gallery')) : esc_url(home_url('/')) . '#gallery'; ?>"><?php esc_html_e('Gallery', 'izin-designs-theme'); ?></a>

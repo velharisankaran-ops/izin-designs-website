@@ -145,6 +145,37 @@ document.addEventListener("DOMContentLoaded", function () {
 
   var form = document.querySelector("[data-lead-form]");
   prepareHomepageLeadForm(form);
+  var homepageMobileFormQuery = window.matchMedia("(max-width: 760px)");
+  var homepageMobileFormOpen = document.querySelector("[data-home-form-open]");
+  var homepageFormCard = document.querySelector("[data-home-form-card]");
+
+  function openHomepageMobileForm(shouldFocus) {
+    if (!homepageMobileFormOpen || !homepageFormCard || !homepageMobileFormQuery.matches) return;
+
+    homepageFormCard.classList.add("is-mobile-open");
+    homepageMobileFormOpen.hidden = true;
+    homepageMobileFormOpen.setAttribute("aria-expanded", "true");
+
+    if (shouldFocus && form) {
+      window.requestAnimationFrame(function () {
+        var firstField = form.querySelector("select, input:not([type='hidden'])");
+        if (firstField) firstField.focus({ preventScroll: true });
+      });
+    }
+  }
+
+  if (homepageMobileFormOpen) {
+    homepageMobileFormOpen.addEventListener("click", function () {
+      openHomepageMobileForm(true);
+    });
+  }
+
+  Array.prototype.slice.call(document.querySelectorAll('a[href="#consultation"]')).forEach(function (link) {
+    link.addEventListener("click", function () {
+      openHomepageMobileForm(false);
+    });
+  });
+
   var isFreeConsultationPreview = !!document.querySelector(".free-consultation-form-only");
   var feedbackAudio = isFreeConsultationPreview ? {
     success: new Audio("assets/thank-you.mp3"),

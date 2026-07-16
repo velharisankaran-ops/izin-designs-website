@@ -243,6 +243,19 @@ if (!function_exists('izin_designs_inject_video_section')) {
 
         $html = preg_replace('/<nav class="nav" id="primary-nav"[^>]*>.*?<\/nav>/is', $primary_nav, $html, 1);
 
+        if (strpos($html, 'data-home-form-open') === false) {
+            $mobile_form_launcher = '<button class="izin-mobile-form-launcher" type="button" data-home-form-open aria-expanded="false" aria-controls="home-consultation-form">'
+                . '<span>Get Free Consultation</span><span aria-hidden="true">&rarr;</span>'
+                . '</button>';
+
+            $html = preg_replace(
+                '/<div class="izin-form-card">/i',
+                $mobile_form_launcher . '<div class="izin-form-card izin-home-form-card" id="home-consultation-form" data-home-form-card>',
+                $html,
+                1
+            );
+        }
+
         $html = preg_replace('/\s*<section class="izin-package-section" id="packages">.*?<\/section>\s*/is', "\n", $html, 1);
         $video_section = izin_designs_video_section_markup();
         $html = preg_replace('/\s*<section class="shorts-section" id="videos">.*?<\/section>\s*/is', "\n" . $video_section . "\n", $html, 1);

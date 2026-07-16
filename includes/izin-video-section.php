@@ -236,6 +236,15 @@ if (!function_exists('izin_designs_video_section_markup')) {
 
 if (!function_exists('izin_designs_inject_video_section')) {
     function izin_designs_inject_video_section($html) {
+        if (strpos($html, 'https://hub.izindesigns.com/') === false) {
+            $html = preg_replace(
+                '/(<nav class="nav" id="primary-nav"[^>]*>)/i',
+                '$1' . "\n        " . '<a href="https://hub.izindesigns.com/">Hub</a>',
+                $html,
+                1
+            );
+        }
+
         $html = preg_replace('/\s*<section class="izin-package-section" id="packages">.*?<\/section>\s*/is', "\n", $html, 1);
         $video_section = izin_designs_video_section_markup();
         $html = preg_replace('/\s*<section class="shorts-section" id="videos">.*?<\/section>\s*/is', "\n" . $video_section . "\n", $html, 1);

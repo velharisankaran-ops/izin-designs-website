@@ -72,7 +72,79 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
+  function prepareHomepageLeadForm(leadForm) {
+    if (!leadForm || leadForm.querySelector("[data-form-step]")) return;
+
+    var fieldNames = ["location", "property_type", "sqft", "budget", "name", "phone", "email"];
+    var fields = {};
+    var hiddenInputs = Array.prototype.slice.call(leadForm.querySelectorAll("input[type='hidden']"));
+    var originalSubmit = leadForm.querySelector(".izin-submit[type='submit']");
+    var originalNote = leadForm.querySelector(".izin-form-note");
+
+    fieldNames.forEach(function (name) {
+      var control = leadForm.querySelector("[name='" + name + "']");
+      if (control) fields[name] = control.closest(".izin-field");
+    });
+
+    if (!fields.location || !fields.property_type || !fields.budget || !fields.name || !fields.phone) return;
+
+    var locationControl = fields.location.querySelector("[name='location']");
+    var locationLabel = fields.location.querySelector("label");
+    if (locationControl) locationControl.required = true;
+    if (locationLabel && locationLabel.textContent.indexOf("*") === -1) locationLabel.textContent = "Location *";
+
+    function makeGrid(names) {
+      var grid = document.createElement("div");
+      grid.className = "izin-form-grid";
+      names.forEach(function (name) {
+        if (fields[name]) grid.appendChild(fields[name]);
+      });
+      return grid;
+    }
+
+    var progress = document.createElement("div");
+    progress.className = "izin-form-progress";
+    progress.setAttribute("aria-label", "Consultation form progress");
+    progress.innerHTML = '<div class="izin-form-progress-step is-active" data-form-progress="1"><span>1</span><small>Project</small></div><div class="izin-form-progress-line" aria-hidden="true"><span data-form-progress-line></span></div><div class="izin-form-progress-step" data-form-progress="2"><span>2</span><small>Contact</small></div>';
+
+    var firstPanel = document.createElement("div");
+    firstPanel.className = "izin-form-panel is-active";
+    firstPanel.setAttribute("data-form-step", "1");
+    firstPanel.appendChild(fields.location);
+    firstPanel.appendChild(makeGrid(["property_type", "sqft"]));
+    firstPanel.appendChild(fields.budget);
+
+    var nextActions = document.createElement("div");
+    nextActions.className = "izin-form-actions";
+    nextActions.innerHTML = '<button class="izin-submit is-secondary" type="button" data-form-next>Next</button>';
+    firstPanel.appendChild(nextActions);
+
+    var secondPanel = document.createElement("div");
+    secondPanel.className = "izin-form-panel";
+    secondPanel.setAttribute("data-form-step", "2");
+    secondPanel.hidden = true;
+    secondPanel.appendChild(makeGrid(["name", "phone"]));
+    if (fields.email) secondPanel.appendChild(fields.email);
+
+    var finalActions = document.createElement("div");
+    finalActions.className = "izin-form-actions izin-form-actions-split";
+    finalActions.innerHTML = '<button class="izin-submit is-secondary" type="button" data-form-back>Back</button>';
+    if (originalSubmit) {
+      originalSubmit.textContent = "Get Free Consultation";
+      finalActions.appendChild(originalSubmit);
+    }
+    secondPanel.appendChild(finalActions);
+    if (originalNote) secondPanel.appendChild(originalNote);
+
+    leadForm.replaceChildren();
+    hiddenInputs.forEach(function (input) { leadForm.appendChild(input); });
+    leadForm.appendChild(progress);
+    leadForm.appendChild(firstPanel);
+    leadForm.appendChild(secondPanel);
+  }
+
   var form = document.querySelector("[data-lead-form]");
+  prepareHomepageLeadForm(form);
   var isFreeConsultationPreview = !!document.querySelector(".free-consultation-form-only");
   var feedbackAudio = isFreeConsultationPreview ? {
     success: new Audio("assets/thank-you.mp3"),
@@ -269,6 +341,44 @@ document.addEventListener("DOMContentLoaded", function () {
       await playFeedbackAudio("success", 950);
       window.location.href = whatsappURL;
     });
+  }
+
+  var solutionCards = Array.prototype.slice.call(document.querySelectorAll(".izin-solution-card"));
+  solutionCards.forEach(function (card) {
+    if (card.querySelector(".izin-solution-toggle")) return;
+
+    var toggle = document.createElement("button");
+    toggle.className = "izin-solution-toggle";
+    toggle.type = "button";
+    toggle.setAttribute("aria-expanded", "false");
+    toggle.innerHTML = '<span>View services</span><strong aria-hidden="true">+</strong>';
+
+    var firstService = card.querySelector(".izin-service-group");
+    card.insertBefore(toggle, firstService);
+
+    toggle.addEventListener("click", function () {
+      var shouldOpen = !card.classList.contains("is-open");
+
+      solutionCards.forEach(function (otherCard) {
+        otherCard.classList.remove("is-open");
+        var otherToggle = otherCard.querySelector(".izin-solution-toggle");
+        if (otherToggle) {
+          otherToggle.setAttribute("aria-expanded", "false");
+          otherToggle.querySelector("span").textContent = "View services";
+          otherToggle.querySelector("strong").textContent = "+";
+        }
+      });
+
+      card.classList.toggle("is-open", shouldOpen);
+      toggle.setAttribute("aria-expanded", String(shouldOpen));
+      toggle.querySelector("span").textContent = shouldOpen ? "Hide services" : "View services";
+      toggle.querySelector("strong").textContent = shouldOpen ? "-" : "+";
+    });
+  });
+
+  var worksHeading = document.querySelector("#works .strip-head h2, #works .izin-portfolio-head h2");
+  if (worksHeading && !worksHeading.textContent.trim()) {
+    worksHeading.textContent = "Selected Interior Projects";
   }
 
   var careerForm = document.querySelector("[data-career-form]");

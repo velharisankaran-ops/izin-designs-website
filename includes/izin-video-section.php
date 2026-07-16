@@ -170,7 +170,7 @@ if (!function_exists('izin_designs_video_section_markup')) {
           }
 
           .video-slider {
-            --video-card-width: 78vw;
+            --video-card-width: 60vw;
             gap: 14px;
             scroll-padding-inline: 16px;
           }
@@ -181,7 +181,7 @@ if (!function_exists('izin_designs_video_section_markup')) {
 
           .izin-video-meta p,
           .izin-video-meta a {
-            font-size: 12px;
+            display: none;
           }
         }
       </style>

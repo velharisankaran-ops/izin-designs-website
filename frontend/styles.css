@@ -6886,3 +6886,245 @@ body.creatives-rate-dialog-open {
     font-size: 12px;
   }
 }
+
+/* Interiors homepage mobile system */
+.izin-solution-toggle {
+  display: none;
+}
+
+@media (max-width: 760px) {
+  .home .izin-form-body input,
+  .home .izin-form-body select {
+    min-height: 44px;
+    padding: 10px 12px;
+    border-radius: 6px;
+    font-size: 13px;
+  }
+
+  .home .izin-field label {
+    margin-bottom: 5px;
+    font-size: 11px;
+  }
+
+  .home .izin-form-progress {
+    margin-bottom: 12px;
+  }
+
+  .home .izin-form-actions .izin-submit {
+    min-width: 0;
+    min-height: 44px;
+    border-radius: 6px;
+    font-size: 11px;
+  }
+
+  .home .izin-form-actions:not(.izin-form-actions-split) .izin-submit {
+    width: 100%;
+  }
+
+  .home .izin-form-actions-split {
+    display: grid;
+    grid-template-columns: 0.7fr 1.3fr;
+  }
+
+  .izin-solutions-section {
+    padding: 32px 0 36px;
+  }
+
+  .izin-solutions-head {
+    margin-bottom: 16px;
+  }
+
+  .izin-solutions-title,
+  .izin-contact-head h2,
+  #videos .video-section-head h2 {
+    max-width: 340px;
+    font-size: 23px;
+    line-height: 1.14;
+  }
+
+  .izin-solutions-text,
+  .izin-contact-head p {
+    margin-top: 9px;
+    font-size: 12.5px;
+    line-height: 1.55;
+  }
+
+  .izin-solutions-grid {
+    gap: 10px;
+  }
+
+  .izin-solution-card,
+  .izin-solution-card:nth-child(1),
+  .izin-solution-card:nth-child(2),
+  .izin-solution-card:nth-child(3) {
+    padding: 17px 16px 14px;
+    border-radius: 8px;
+    background: #ffffff;
+    box-shadow: 0 7px 18px rgba(30, 29, 34, 0.05);
+  }
+
+  .izin-solution-card:hover {
+    transform: none;
+  }
+
+  .izin-solution-card::before {
+    right: 16px;
+    left: 16px;
+    height: 2px;
+    border-radius: 0;
+  }
+
+  .izin-solution-number {
+    margin-bottom: 8px;
+    font-size: 9px;
+  }
+
+  .izin-solution-card h3 {
+    margin-bottom: 5px;
+    font-size: 18px;
+    line-height: 1.18;
+  }
+
+  .izin-solution-intro {
+    margin-bottom: 8px;
+    font-size: 12px;
+    line-height: 1.48;
+  }
+
+  .izin-solution-toggle {
+    width: 100%;
+    min-height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 8px;
+    padding: 0;
+    border: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 0;
+    background: transparent;
+    color: var(--ink);
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  .izin-solution-toggle strong {
+    font-size: 20px;
+    font-weight: 400;
+  }
+
+  .izin-solution-card .izin-service-group {
+    display: none;
+    grid-template-columns: 28px minmax(0, 1fr);
+    gap: 9px;
+    padding: 12px 0;
+  }
+
+  .izin-solution-card.is-open .izin-service-group {
+    display: grid;
+  }
+
+  .izin-service-index {
+    width: 24px;
+    height: 24px;
+    font-size: 9px;
+  }
+
+  .izin-service-detail strong {
+    font-size: 12px;
+  }
+
+  .izin-service-detail p {
+    margin-top: 3px;
+    font-size: 11px;
+    line-height: 1.45;
+  }
+
+  #works .strip-head h2,
+  #gallery .strip-head h2 {
+    margin: 5px 0 0;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 21px;
+    line-height: 1.16;
+    font-weight: 400;
+  }
+
+  .izin-contact-section {
+    padding: 32px 0 36px;
+  }
+
+  .izin-contact-head {
+    margin-bottom: 16px;
+  }
+
+  .izin-contact-main {
+    gap: 14px;
+  }
+
+  .izin-contact-details,
+  .izin-map-card {
+    border-radius: 8px;
+  }
+
+  .izin-contact-details {
+    padding: 14px 16px 16px;
+  }
+
+  .izin-contact-details > div:not(.izin-contact-actions) {
+    padding: 11px 0;
+  }
+
+  .izin-contact-details h3 {
+    margin-bottom: 5px;
+    font-size: 9px;
+  }
+
+  .izin-contact-details p {
+    font-size: 12.5px;
+    line-height: 1.55;
+  }
+
+  .izin-contact-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 14px;
+  }
+
+  .izin-contact-actions a {
+    width: 100%;
+    min-height: 44px;
+    padding: 0 10px;
+    border-radius: 6px;
+    font-size: 10px;
+  }
+
+  .izin-contact-actions .outline {
+    display: none;
+  }
+
+  .izin-map-card iframe {
+    height: 230px;
+  }
+
+  .izin-map-card > div {
+    padding: 15px 16px 17px;
+  }
+
+  .izin-map-card h3 {
+    font-size: 20px;
+  }
+
+  .izin-map-card p {
+    margin-bottom: 11px;
+    font-size: 12px;
+    line-height: 1.55;
+  }
+
+  .izin-map-card a {
+    min-height: 42px;
+    border-radius: 6px;
+    font-size: 9.5px;
+  }
+}

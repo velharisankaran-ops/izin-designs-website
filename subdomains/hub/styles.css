@@ -479,28 +479,47 @@ button.division-card:focus-visible {
 
   .manager-profile-mobile {
     display: grid;
-    grid-template-columns: 76px minmax(0, 1fr);
-    gap: 12px;
-    padding: 9px;
+    grid-template-columns: 96px minmax(0, 1fr);
+    column-gap: 15px;
+    row-gap: 12px;
+    padding: 22px 0 0;
+    border: 0;
+    border-top: 1px solid var(--line);
+    border-radius: 0;
+    background: transparent;
   }
 
   .manager-profile-mobile .manager-title {
-    margin: 1px 0 2px;
-    font-size: 9px;
+    margin: 0;
+    color: var(--emerald);
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 21px;
+    font-weight: 700;
+    letter-spacing: 0;
+    line-height: 1.16;
+    text-transform: none;
   }
 
   .manager-profile-mobile img {
-    width: 76px;
-    height: 72px;
-    border-radius: 5px;
+    width: 96px;
+    height: 102px;
+    border-radius: 6px;
   }
 
   .manager-profile-mobile figcaption {
+    align-self: center;
     padding-top: 0;
   }
 
   .manager-profile-mobile strong {
-    font-size: 16px;
+    font-size: 19px;
+    line-height: 1.12;
+  }
+
+  .manager-profile-mobile span {
+    margin-top: 3px;
+    font-size: 9px;
+    letter-spacing: 0.14em;
   }
 
   .hub-hero .eyebrow,
@@ -517,6 +536,7 @@ button.division-card:focus-visible {
 
   .hub-sidebar {
     position: static;
+    gap: 20px;
   }
 
   .section-heading h2 {

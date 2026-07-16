@@ -384,8 +384,45 @@ document.addEventListener("DOMContentLoaded", function () {
   var careerForm = document.querySelector("[data-career-form]");
   var bidProjectForm = document.querySelector("[data-bid-project-form]");
   var creativesForm = document.querySelector("[data-izin-creatives-form]");
+  var creativesEnquiry = document.querySelector("[data-creatives-enquiry]");
+  var creativesFormOpen = document.querySelector("[data-creatives-form-open]");
+  var creativesFormPanel = document.querySelector("[data-creatives-form-panel]");
   var creativesRateDialog = document.querySelector("[data-creatives-rate-dialog]");
   var creativesServiceTriggers = Array.prototype.slice.call(document.querySelectorAll("[data-creatives-service]"));
+
+  function openCreativesEnquiry(shouldFocus) {
+    if (!creativesEnquiry || !creativesFormPanel) return;
+
+    creativesFormPanel.hidden = false;
+    creativesEnquiry.classList.add("is-open");
+
+    if (creativesFormOpen) {
+      creativesFormOpen.setAttribute("aria-expanded", "true");
+    }
+
+    if (shouldFocus && creativesForm) {
+      window.requestAnimationFrame(function () {
+        var firstField = creativesForm.querySelector("select, input:not(.izin-honeypot):not([type='hidden']), textarea");
+        if (firstField) firstField.focus({ preventScroll: true });
+      });
+    }
+  }
+
+  if (creativesFormOpen) {
+    creativesFormOpen.addEventListener("click", function () {
+      openCreativesEnquiry(true);
+    });
+  }
+
+  Array.prototype.slice.call(document.querySelectorAll("a[href='#creatives-form']")).forEach(function (link) {
+    link.addEventListener("click", function () {
+      openCreativesEnquiry(false);
+    });
+  });
+
+  if (window.location.hash === "#creatives-form") {
+    openCreativesEnquiry(false);
+  }
 
   if (creativesRateDialog && creativesServiceTriggers.length) {
     var creativesRatePanels = Array.prototype.slice.call(creativesRateDialog.querySelectorAll("[data-creatives-rate-panel]"));
@@ -447,6 +484,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         closeCreativesRateDialog();
         if (creativesForm) {
+          openCreativesEnquiry(false);
           creativesForm.scrollIntoView({ behavior: "smooth", block: "start" });
         }
       });

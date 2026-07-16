@@ -61,7 +61,10 @@ get_header();
             <h3><?php echo esc_html($service['title']); ?></h3>
             <p><?php echo esc_html($service['summary']); ?></p>
             <span class="creatives-service-price"><?php echo esc_html($service['starting_price']); ?></span>
-            <span class="creatives-service-link">View Services &amp; Rates</span>
+            <span class="creatives-service-link">
+              <span>View rates</span>
+              <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
+            </span>
           </div>
         </button>
       <?php endforeach; ?>
@@ -340,7 +343,13 @@ get_header();
   </section>
   <?php endif; ?>
 
-  <section class="creatives-section" id="creatives-form">
+  <section class="creatives-section creatives-enquiry" id="creatives-form" data-creatives-enquiry>
+    <button class="creatives-enquiry-open" type="button" data-creatives-form-open aria-expanded="false" aria-controls="creatives-form-panel">
+      <span>Start Project Enquiry</span>
+      <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
+    </button>
+
+    <div class="creatives-enquiry-panel" id="creatives-form-panel" data-creatives-form-panel hidden>
     <div class="creatives-enquiry-title">
       <strong>PROJECT ENQUIRY:</strong>
       <span>Tell us what you need</span>
@@ -480,6 +489,7 @@ get_header();
 
       <p class="career-form-status" data-izin-creatives-status aria-live="polite"></p>
     </form>
+    </div>
   </section>
 </main>
 

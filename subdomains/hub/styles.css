@@ -491,13 +491,13 @@ button.division-card:focus-visible {
 
   .manager-profile-mobile .manager-title {
     margin: 0;
-    color: var(--emerald);
-    font-family: "Playfair Display", Georgia, serif;
-    font-size: 21px;
-    font-weight: 700;
-    letter-spacing: 0;
-    line-height: 1.16;
-    text-transform: none;
+    color: #557067;
+    font-family: "Inter", Arial, sans-serif;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    line-height: 1.2;
+    text-transform: uppercase;
   }
 
   .manager-profile-mobile img {

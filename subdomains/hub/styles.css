@@ -144,12 +144,6 @@ select {
   z-index: 1;
 }
 
-.hub-hero-content .eyebrow {
-  margin-bottom: 8px;
-  color: var(--mint);
-  letter-spacing: 0.3em;
-}
-
 .eyebrow {
   margin: 0 0 8px;
   color: #557067;

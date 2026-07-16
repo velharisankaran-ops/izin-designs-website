@@ -173,6 +173,17 @@ select {
   text-transform: uppercase;
 }
 
+.manager-title {
+  grid-column: 1 / -1;
+  margin: 0 0 8px;
+  color: #557067;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
 .manager-profile-desktop {
   width: 220px;
   display: block;
@@ -471,6 +482,11 @@ button.division-card:focus-visible {
     grid-template-columns: 76px minmax(0, 1fr);
     gap: 12px;
     padding: 9px;
+  }
+
+  .manager-profile-mobile .manager-title {
+    margin: 1px 0 2px;
+    font-size: 9px;
   }
 
   .manager-profile-mobile img {

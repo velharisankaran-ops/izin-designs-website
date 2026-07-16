@@ -241,7 +241,7 @@ select {
 }
 
 .manager-profile-desktop {
-  width: 220px;
+  width: 170px;
   display: block;
   margin-top: 28px;
   padding: 0;
@@ -251,8 +251,8 @@ select {
 }
 
 .manager-profile-desktop img {
-  width: 220px;
-  height: 206px;
+  width: 170px;
+  height: 159px;
   border-radius: 6px;
 }
 

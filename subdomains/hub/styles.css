@@ -87,7 +87,11 @@ select {
 }
 
 .hub-hero {
-  max-width: 720px;
+  display: grid;
+  grid-template-columns: minmax(0, 720px) 220px;
+  align-items: end;
+  justify-content: space-between;
+  gap: 48px;
   margin-bottom: 42px;
 }
 
@@ -167,6 +171,30 @@ select {
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
+}
+
+.manager-profile-desktop {
+  width: 220px;
+  display: block;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  justify-self: end;
+}
+
+.manager-profile-desktop img {
+  width: 220px;
+  height: 206px;
+  border-radius: 6px;
+}
+
+.manager-profile-desktop figcaption {
+  padding-top: 9px;
+}
+
+.manager-profile-mobile {
+  display: none;
 }
 
 .hub-layout {
@@ -416,6 +444,9 @@ button.division-card:focus-visible {
   }
 
   .hub-hero {
+    grid-template-columns: 1fr;
+    align-items: start;
+    gap: 0;
     margin-bottom: 24px;
   }
 
@@ -431,23 +462,28 @@ button.division-card:focus-visible {
     line-height: 1.48;
   }
 
-  .manager-profile {
+  .manager-profile-desktop {
+    display: none;
+  }
+
+  .manager-profile-mobile {
+    display: grid;
     grid-template-columns: 76px minmax(0, 1fr);
     gap: 12px;
     padding: 9px;
   }
 
-  .manager-profile img {
+  .manager-profile-mobile img {
     width: 76px;
     height: 72px;
     border-radius: 5px;
   }
 
-  .manager-profile figcaption {
+  .manager-profile-mobile figcaption {
     padding-top: 0;
   }
 
-  .manager-profile strong {
+  .manager-profile-mobile strong {
     font-size: 16px;
   }
 

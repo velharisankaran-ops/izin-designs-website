@@ -274,6 +274,80 @@ document.addEventListener("DOMContentLoaded", function () {
   var careerForm = document.querySelector("[data-career-form]");
   var bidProjectForm = document.querySelector("[data-bid-project-form]");
   var creativesForm = document.querySelector("[data-izin-creatives-form]");
+  var creativesRateDialog = document.querySelector("[data-creatives-rate-dialog]");
+  var creativesServiceTriggers = Array.prototype.slice.call(document.querySelectorAll("[data-creatives-service]"));
+
+  if (creativesRateDialog && creativesServiceTriggers.length) {
+    var creativesRatePanels = Array.prototype.slice.call(creativesRateDialog.querySelectorAll("[data-creatives-rate-panel]"));
+    var creativesRateTitle = creativesRateDialog.querySelector("[data-creatives-rate-title]");
+    var creativesRateCloseButtons = Array.prototype.slice.call(creativesRateDialog.querySelectorAll("[data-creatives-rate-close]"));
+    var creativesRateEnquireButtons = Array.prototype.slice.call(creativesRateDialog.querySelectorAll("[data-creatives-rate-enquire]"));
+    var activeCreativesTrigger = null;
+
+    function closeCreativesRateDialog() {
+      creativesRateDialog.hidden = true;
+      document.body.classList.remove("creatives-rate-dialog-open");
+      if (activeCreativesTrigger) activeCreativesTrigger.focus();
+    }
+
+    function openCreativesRateDialog(trigger) {
+      var panelKey = trigger.getAttribute("data-creatives-service");
+      var activePanel = null;
+
+      creativesRatePanels.forEach(function (panel) {
+        var isActive = panel.getAttribute("data-creatives-rate-panel") === panelKey;
+        panel.hidden = !isActive;
+        if (isActive) activePanel = panel;
+      });
+
+      if (!activePanel) return;
+
+      activeCreativesTrigger = trigger;
+      if (creativesRateTitle) {
+        var cardTitle = trigger.querySelector("h3");
+        creativesRateTitle.textContent = cardTitle ? cardTitle.textContent : "Service Rates";
+      }
+
+      creativesRateDialog.hidden = false;
+      document.body.classList.add("creatives-rate-dialog-open");
+
+      var closeButton = creativesRateDialog.querySelector(".creatives-rate-dialog-close");
+      if (closeButton) closeButton.focus();
+    }
+
+    creativesServiceTriggers.forEach(function (trigger) {
+      trigger.addEventListener("click", function () {
+        openCreativesRateDialog(trigger);
+      });
+    });
+
+    creativesRateCloseButtons.forEach(function (button) {
+      button.addEventListener("click", closeCreativesRateDialog);
+    });
+
+    creativesRateEnquireButtons.forEach(function (button) {
+      button.addEventListener("click", function () {
+        var panel = button.closest("[data-creatives-rate-panel]");
+        var serviceValue = panel ? panel.getAttribute("data-service-value") : "";
+        var serviceSelect = creativesForm ? creativesForm.querySelector("select[name='service_needed']") : null;
+
+        if (serviceSelect && serviceValue) {
+          serviceSelect.value = serviceValue;
+        }
+
+        closeCreativesRateDialog();
+        if (creativesForm) {
+          creativesForm.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      });
+    });
+
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape" && !creativesRateDialog.hidden) {
+        closeCreativesRateDialog();
+      }
+    });
+  }
 
   var creativesMobileSections = Array.prototype.slice.call(document.querySelectorAll("[data-mobile-collapsible]"));
   var creativesMobileQuery = window.matchMedia("(max-width: 820px)");

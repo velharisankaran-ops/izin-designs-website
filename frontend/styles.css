@@ -6591,3 +6591,241 @@ a.izin-hub-division:focus-visible {
     font-size: 9px;
   }
 }
+
+/* IZIN Creatives service rate dialog */
+.izin-creatives-view .creatives-service-card {
+  width: 100%;
+  padding: 0;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.izin-creatives-view .creatives-service-card:focus-visible {
+  outline: 2px solid #bbedd7;
+  outline-offset: 3px;
+}
+
+.izin-creatives-view .creatives-service-card-copy > span {
+  display: block;
+  margin-top: 8px;
+  color: #176b56;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+body.creatives-rate-dialog-open {
+  overflow: hidden;
+}
+
+.creatives-rate-dialog[hidden],
+.creatives-rate-panel[hidden] {
+  display: none;
+}
+
+.creatives-rate-dialog {
+  position: fixed;
+  z-index: 120;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+.creatives-rate-dialog-backdrop {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: rgba(0, 22, 15, 0.7);
+  cursor: pointer;
+}
+
+.creatives-rate-dialog-sheet {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 780px);
+  max-height: min(82vh, 760px);
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  overflow: hidden;
+  border: 1px solid rgba(10, 61, 46, 0.14);
+  border-radius: 8px;
+  background: #faf9f5;
+  box-shadow: 0 26px 70px rgba(0, 25, 18, 0.24);
+}
+
+.creatives-rate-dialog-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 20px 22px 16px;
+  border-bottom: 1px solid rgba(10, 61, 46, 0.12);
+  background: #ffffff;
+}
+
+.creatives-rate-dialog-head small {
+  display: block;
+  margin-bottom: 4px;
+  color: #557067;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.creatives-rate-dialog-head h2 {
+  margin: 0;
+  color: #00261b;
+  font-family: "Playfair Display", "Times New Roman", serif;
+  font-size: 28px;
+  line-height: 1.12;
+}
+
+.creatives-rate-dialog-close {
+  width: 36px;
+  height: 36px;
+  display: grid;
+  flex: 0 0 auto;
+  place-items: center;
+  padding: 0;
+  border: 1px solid rgba(10, 61, 46, 0.16);
+  border-radius: 50%;
+  background: #ffffff;
+  color: #00261b;
+  cursor: pointer;
+}
+
+.creatives-rate-dialog-close .material-symbols-outlined {
+  font-size: 20px;
+}
+
+.creatives-rate-dialog-body {
+  overflow-y: auto;
+  padding: 10px 22px 22px;
+}
+
+.creatives-rate-panel {
+  display: grid;
+}
+
+.creatives-rate-group {
+  padding: 18px 0 14px;
+  border-bottom: 1px solid rgba(10, 61, 46, 0.12);
+}
+
+.creatives-rate-group h3 {
+  margin: 0 0 8px;
+  color: #00261b;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.creatives-rate-group dl {
+  margin: 0;
+}
+
+.creatives-rate-group dl > div {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) max-content;
+  gap: 18px;
+  padding: 9px 0;
+}
+
+.creatives-rate-group dl > div + div {
+  border-top: 1px solid rgba(10, 61, 46, 0.08);
+}
+
+.creatives-rate-group dt,
+.creatives-rate-group dd {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.creatives-rate-group dt {
+  color: #38443f;
+}
+
+.creatives-rate-group dd {
+  color: #0a624d;
+  font-weight: 600;
+  text-align: right;
+}
+
+.creatives-rate-note {
+  margin: 14px 0 0;
+  color: #69746f;
+  font-size: 10px;
+  line-height: 1.5;
+}
+
+.creatives-rate-enquire {
+  min-height: 44px;
+  margin-top: 16px;
+  border: 0;
+  border-radius: 6px;
+  background: #0a3d2e;
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+@media (max-width: 760px) {
+  .izin-creatives-view .creatives-service-card-copy > span {
+    margin-top: 5px;
+    font-size: 8px;
+    line-height: 1.25;
+  }
+
+  .creatives-rate-dialog {
+    place-items: end center;
+    padding: 0;
+  }
+
+  .creatives-rate-dialog-sheet {
+    width: 100%;
+    max-height: 82vh;
+    border-right: 0;
+    border-bottom: 0;
+    border-left: 0;
+    border-radius: 8px 8px 0 0;
+  }
+
+  .creatives-rate-dialog-head {
+    padding: 16px 16px 13px;
+  }
+
+  .creatives-rate-dialog-head h2 {
+    font-size: 24px;
+  }
+
+  .creatives-rate-dialog-body {
+    padding: 4px 16px calc(18px + env(safe-area-inset-bottom));
+  }
+
+  .creatives-rate-group {
+    padding-top: 15px;
+  }
+
+  .creatives-rate-group dl > div {
+    gap: 12px;
+    padding: 8px 0;
+  }
+
+  .creatives-rate-group dt,
+  .creatives-rate-group dd {
+    font-size: 12px;
+  }
+}

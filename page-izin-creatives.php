@@ -26,18 +26,21 @@ get_header();
       <?php
       $creative_services = array(
           array(
+              'key' => 'graphic-design',
               'title' => 'Graphic Design',
               'summary' => 'Brand visuals and communication systems.',
               'image' => 'graphic-design.jpg',
               'alt' => 'Colour and brand design materials arranged on a creative workspace',
           ),
           array(
+              'key' => 'digital-marketing',
               'title' => 'Digital Marketing',
               'summary' => 'Content, campaigns and lead growth.',
               'image' => 'digital-marketing.jpg',
               'alt' => 'Digital campaign analytics displayed on a laptop',
           ),
           array(
+              'key' => 'web-development',
               'title' => 'Web Development',
               'summary' => 'Responsive websites and landing pages.',
               'image' => 'web-development.jpg',
@@ -47,16 +50,107 @@ get_header();
 
       foreach ($creative_services as $index => $service) :
       ?>
-        <article class="creatives-service-card">
+        <button class="creatives-service-card" type="button" data-creatives-service="<?php echo esc_attr($service['key']); ?>" aria-haspopup="dialog">
           <img src="<?php echo esc_url(get_template_directory_uri() . '/frontend/assets/creatives/' . $service['image']); ?>" alt="<?php echo esc_attr($service['alt']); ?>" width="1200" height="900" loading="<?php echo $index === 0 ? 'eager' : 'lazy'; ?>" decoding="async">
           <div class="creatives-service-card-copy">
             <h3><?php echo esc_html($service['title']); ?></h3>
             <p><?php echo esc_html($service['summary']); ?></p>
+            <span>View services &amp; rates</span>
           </div>
-        </article>
+        </button>
       <?php endforeach; ?>
     </div>
   </section>
+
+  <?php
+  $creative_rate_panels = array(
+      'graphic-design' => array(
+          'title' => 'Graphic Design',
+          'service_value' => 'Graphic Design',
+          'groups' => array(
+              array('Branding', array(
+                  array('Logo Design', 'Rs. 3,000+'),
+                  array('Brand Strategy', 'Rs. 7,500+'),
+                  array('Full Identity Kit', 'Rs. 15,000+'),
+              )),
+              array('Marketing Materials', array(
+                  array('Social Posters', 'Rs. 400 - 800'),
+                  array('Product Catalog', 'Rs. 1,200+'),
+                  array('Print Media', 'Rs. 800+'),
+              )),
+              array('Event Design', array(
+                  array('Wedding Invite Set', 'Rs. 2,500+'),
+                  array('E-Invites', 'Rs. 950+'),
+                  array('Event Branding', 'Custom quote'),
+              )),
+              array('Business Documents', array(
+                  array('Pitch Deck Design', 'Rs. 3,000+'),
+                  array('Proposal Templates', 'Rs. 1,500+'),
+                  array('Letterheads / Business Cards', 'Rs. 800+'),
+              )),
+          ),
+      ),
+      'digital-marketing' => array(
+          'title' => 'Digital Marketing',
+          'service_value' => 'Digital Marketing',
+          'groups' => array(
+              array('Campaign & Growth', array(
+                  array('SEO Campaign / month', 'Rs. 10,000+'),
+                  array('Ads Management', 'Rs. 8,500+'),
+                  array('Social Growth Pack', 'Rs. 15,000+'),
+              )),
+          ),
+      ),
+      'web-development' => array(
+          'title' => 'Web Development',
+          'service_value' => 'Web Development',
+          'groups' => array(
+              array('Web & App', array(
+                  array('Landing Page', 'Rs. 12,000+'),
+                  array('Full CMS Website', 'Rs. 25,000+'),
+                  array('Custom Mobile App', 'Custom quote'),
+              )),
+          ),
+      ),
+  );
+  ?>
+
+  <div class="creatives-rate-dialog" data-creatives-rate-dialog hidden>
+    <button class="creatives-rate-dialog-backdrop" type="button" data-creatives-rate-close aria-label="Close service rates"></button>
+    <section class="creatives-rate-dialog-sheet" role="dialog" aria-modal="true" aria-labelledby="creatives-rate-dialog-title">
+      <header class="creatives-rate-dialog-head">
+        <div>
+          <small>Services &amp; starting rates</small>
+          <h2 id="creatives-rate-dialog-title" data-creatives-rate-title>Service Rates</h2>
+        </div>
+        <button class="creatives-rate-dialog-close" type="button" data-creatives-rate-close aria-label="Close">
+          <span class="material-symbols-outlined" aria-hidden="true">close</span>
+        </button>
+      </header>
+
+      <div class="creatives-rate-dialog-body">
+        <?php foreach ($creative_rate_panels as $panel_key => $panel) : ?>
+          <div class="creatives-rate-panel" data-creatives-rate-panel="<?php echo esc_attr($panel_key); ?>" data-service-value="<?php echo esc_attr($panel['service_value']); ?>" hidden>
+            <?php foreach ($panel['groups'] as $group) : ?>
+              <section class="creatives-rate-group">
+                <h3><?php echo esc_html($group[0]); ?></h3>
+                <dl>
+                  <?php foreach ($group[1] as $rate) : ?>
+                    <div>
+                      <dt><?php echo esc_html($rate[0]); ?></dt>
+                      <dd><?php echo esc_html($rate[1]); ?></dd>
+                    </div>
+                  <?php endforeach; ?>
+                </dl>
+              </section>
+            <?php endforeach; ?>
+            <p class="creatives-rate-note">Final pricing depends on scope, content volume, integrations and delivery timeline.</p>
+            <button class="creatives-rate-enquire" type="button" data-creatives-rate-enquire>Enquire for this service</button>
+          </div>
+        <?php endforeach; ?>
+      </div>
+    </section>
+  </div>
 
   <nav class="creatives-mobile-index" aria-label="IZIN Creatives page sections">
     <a href="#creatives-about">About</a>

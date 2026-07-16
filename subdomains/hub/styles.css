@@ -524,17 +524,9 @@ button.division-card:focus-visible {
     display: none !important;
   }
 
-  .division-section > .section-heading,
   .hub-sidebar {
     position: sticky;
     top: 88px;
-  }
-
-  .division-section > .section-heading {
-    z-index: 8;
-    margin-bottom: 0;
-    padding-bottom: 16px;
-    background: var(--paper);
   }
 
   .hub-sidebar {

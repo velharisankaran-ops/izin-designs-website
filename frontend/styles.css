@@ -5655,7 +5655,7 @@ img {
 
 @media (max-width: 760px) {
   .izin-creatives-view {
-    padding-bottom: 68px;
+    padding-bottom: 0;
   }
 
   .izin-creatives-view .site-header {

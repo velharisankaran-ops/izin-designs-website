@@ -10,6 +10,8 @@ get_header();
 
 <?php get_template_part('template-parts/site-nav'); ?>
 
+<?php $show_extended_sections = (bool) apply_filters('izin_creatives_show_extended_sections', false); ?>
+
 <main class="creatives-page">
   <section class="creatives-hero">
     <div class="creatives-hero-copy">
@@ -152,6 +154,7 @@ get_header();
     </section>
   </div>
 
+  <?php if ($show_extended_sections) : ?>
   <nav class="creatives-mobile-index" aria-label="IZIN Creatives page sections">
     <a href="#creatives-about">About</a>
     <a href="#creatives-clients">Clients</a>
@@ -331,6 +334,7 @@ get_header();
       </div>
     </details>
   </section>
+  <?php endif; ?>
 
   <section class="creatives-section" id="creatives-form">
     <div class="creatives-enquiry-title">
@@ -474,13 +478,6 @@ get_header();
     </form>
   </section>
 </main>
-
-<nav class="creatives-bottom-nav" aria-label="Mobile navigation">
-  <a href="<?php echo esc_url(home_url('/')); ?>"><span class="material-symbols-outlined" aria-hidden="true">home</span><small>Home</small></a>
-  <a href="#creatives-service-title"><span class="material-symbols-outlined" aria-hidden="true">grid_view</span><small>Services</small></a>
-  <a href="#creatives-form"><span class="material-symbols-outlined" aria-hidden="true">chat_bubble</span><small>Enquire</small></a>
-  <a href="tel:+918714738111"><span class="material-symbols-outlined" aria-hidden="true">call</span><small>Contact</small></a>
-</nav>
 
 <?php get_template_part('template-parts/site-footer'); ?>
 

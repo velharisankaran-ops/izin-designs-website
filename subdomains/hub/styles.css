@@ -88,7 +88,7 @@ select {
 
 .hub-hero {
   display: grid;
-  grid-template-columns: minmax(0, 720px) 220px;
+  grid-template-columns: minmax(360px, 440px) 220px;
   align-items: start;
   justify-content: space-between;
   gap: 48px;
@@ -97,12 +97,13 @@ select {
 
 .hub-hero-copy {
   position: relative;
-  min-height: 400px;
+  width: 100%;
+  aspect-ratio: 335 / 384;
   display: flex;
   align-items: flex-end;
   overflow: hidden;
-  padding: 28px;
-  border-radius: 8px;
+  padding: 24px;
+  border-radius: 16px;
   background: var(--emerald);
 }
 
@@ -116,11 +117,12 @@ select {
 
 .hub-hero-image {
   object-fit: cover;
-  object-position: center 24%;
+  object-position: center center;
+  opacity: 0.8;
 }
 
 .hub-hero-overlay {
-  background: linear-gradient(to top, rgba(0, 38, 27, 0.98) 0%, rgba(0, 38, 27, 0.62) 45%, rgba(0, 38, 27, 0.08) 100%);
+  background: linear-gradient(to top, #00261b 0%, rgba(0, 38, 27, 0.72) 34%, rgba(0, 38, 27, 0.4) 58%, rgba(0, 38, 27, 0) 100%);
 }
 
 .hub-hero-content {
@@ -129,7 +131,9 @@ select {
 }
 
 .hub-hero-content .eyebrow {
+  margin-bottom: 8px;
   color: var(--mint);
+  letter-spacing: 0.3em;
 }
 
 .eyebrow {
@@ -153,8 +157,8 @@ select {
 
 .hub-hero h1 {
   color: #ffffff;
-  font-size: clamp(42px, 4.5vw, 54px);
-  line-height: 1.02;
+  font-size: 40px;
+  line-height: 1.12;
 }
 
 .hub-hero h1 span {
@@ -163,11 +167,11 @@ select {
 }
 
 .hub-hero-content > p:last-child {
-  max-width: 420px;
+  max-width: 350px;
   margin: 12px 0 0;
   color: rgba(255, 255, 255, 0.82);
-  font-size: 14px;
-  line-height: 1.55;
+  font-size: 16px;
+  line-height: 1.6;
 }
 
 .manager-profile {
@@ -500,20 +504,20 @@ button.division-card:focus-visible {
   }
 
   .hub-hero-copy {
-    min-height: 400px;
-    padding: 22px;
+    min-height: 0;
+    padding: 24px;
   }
 
   .hub-hero h1 {
-    font-size: clamp(28px, 9vw, 39px);
-    line-height: 1.03;
+    font-size: clamp(28px, 8.2vw, 32px);
+    line-height: 1.2;
   }
 
   .hub-hero-content > p:last-child {
-    max-width: 280px;
-    margin-top: 10px;
-    font-size: 12px;
-    line-height: 1.5;
+    max-width: 290px;
+    margin-top: 12px;
+    font-size: 14px;
+    line-height: 1.55;
   }
 
   .manager-profile-desktop {
